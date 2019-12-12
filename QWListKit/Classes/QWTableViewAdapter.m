@@ -12,6 +12,8 @@
 
 @interface QWTableViewAdapter () <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, copy) NSArray<QWListSection *> *sections;
+
 @end
 
 @implementation QWTableViewAdapter {
@@ -32,7 +34,7 @@
 }
 
 - (void)reloadListData {
-    _sections = [self.dataSource sectionsForListAdapter:self];
+    self.sections = [self.dataSource sectionsForListAdapter:self];
     [_tableView reloadData];
     UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
     if (backgroundView != _tableView.backgroundView) {
@@ -74,10 +76,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
-    if ([item respondsToSelector:@selector(viewSize)]) {
-        return item.viewSize.height;
-    }
-    return UITableViewAutomaticDimension; // -1
+    return item.viewSize.height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

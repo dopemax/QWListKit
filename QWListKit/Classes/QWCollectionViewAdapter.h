@@ -23,14 +23,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QWCollectionViewAdapter : NSObject
 
-- (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
+- (instancetype)initWithCollectionView:(UICollectionView *)collectionView NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
 @property (nonatomic, weak, readonly) __kindof UICollectionView *collectionView;
 @property (nonatomic, weak) id<QWCollectionViewAdapterDataSource> dataSource;
-@property (nonatomic, strong, readonly) NSArray<QWListSection *> *sections;
 
 @property (nonatomic, copy) void (^configureCellBlock)(__kindof UICollectionViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^configureSupplementaryViewBlock)(__kindof UICollectionReusableView *view, NSString *kind, NSIndexPath *indexPath, id<QWListItem> item);

@@ -26,14 +26,13 @@ typedef void (^QWListConfigureFooterViewBlock)(__kindof UIView *footerView, NSUI
 
 @interface QWTableViewAdapter : NSObject
 
-- (instancetype)initWithTableView:(UITableView *)tableView;
+- (instancetype)initWithTableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
 @property (nonatomic, weak, readonly) __kindof UITableView *tableView;
 @property (nonatomic, weak) id<QWTableViewAdapterDataSource> dataSource;
-@property (nonatomic, strong, readonly) NSArray<QWListSection *> *sections;
 
 @property (nonatomic, copy) void (^configureCellBlock)(__kindof UITableViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) QWListConfigureHeaderViewBlock configureHeaderViewBlock;

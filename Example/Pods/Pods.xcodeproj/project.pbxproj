@@ -46,13 +46,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09ABD1B38DCB35718671A0B45325E33D /* Pods_QWListKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QWListKit_Tests.framework; path = "Pods-QWListKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09ABD1B38DCB35718671A0B45325E33D /* Pods_QWListKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QWListKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA06087CC6B4AFB10420D2200C3BDFD /* Pods-QWListKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QWListKit_Example-Info.plist"; sourceTree = "<group>"; };
 		1031187B6B6EF0D84CB3F979542EA294 /* UIView+QWListKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+QWListKit.h"; path = "QWListKit/Classes/UIView+QWListKit.h"; sourceTree = "<group>"; };
 		1478C7875F1A5F162C14F2DD3799F86C /* UIView+QWListKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+QWListKit.m"; path = "QWListKit/Classes/UIView+QWListKit.m"; sourceTree = "<group>"; };
-		177D232972F6809487F1AE2AD57B3ED7 /* QWListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = QWListKit.framework; path = QWListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1ACA7BD7B7E89FD1976D17F6D44060C5 /* QWListKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = QWListKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		1C9FE2398ABEC37CEAD2598907573768 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		177D232972F6809487F1AE2AD57B3ED7 /* QWListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QWListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACA7BD7B7E89FD1976D17F6D44060C5 /* QWListKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = QWListKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1C9FE2398ABEC37CEAD2598907573768 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		225A3428DB1DDD0B62AF83001A9C50E3 /* Pods-QWListKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QWListKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		31BCF4A0889B3382353995AE054C34FB /* Pods-QWListKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QWListKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -61,18 +61,18 @@
 		400826EE05EC184DDA0D57653A9988D6 /* Pods-QWListKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QWListKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		4435E2DEBF0F396785993AC3E105EC6F /* QWListKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListKit.h; path = QWListKit/Classes/QWListKit.h; sourceTree = "<group>"; };
 		46B727744B443B177BA067454F6009B5 /* QWListKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "QWListKit-Info.plist"; sourceTree = "<group>"; };
-		5D667CA36E099DD8FB041EB6CB4B674E /* Pods_QWListKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QWListKit_Example.framework; path = "Pods-QWListKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D667CA36E099DD8FB041EB6CB4B674E /* Pods_QWListKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QWListKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6446B4BB7EECD58433495D4F941D3857 /* Pods-QWListKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QWListKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		81F1054AD9BAF8263B6B1B922D486BA1 /* QWListItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListItem.h; path = QWListKit/Classes/QWListItem.h; sourceTree = "<group>"; };
 		8BB8E6C1E0B00EDB616787B4E2E8A83D /* Pods-QWListKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QWListKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		955021D703FB7C7284EF57849856BE7B /* Pods-QWListKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QWListKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		96A7F3E89D94F23F58A43B2E04506A6F /* Pods-QWListKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QWListKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A363DD762659BEBEF372384C92EE8EDA /* QWListKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QWListKit-umbrella.h"; sourceTree = "<group>"; };
 		A5C0FB3721BADBB8F227EA0C5F0337E1 /* Pods-QWListKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QWListKit_Tests-dummy.m"; sourceTree = "<group>"; };
 		A85CF3D886E7F8B2786AB86E13A42593 /* QWTableViewAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWTableViewAdapter.h; path = QWListKit/Classes/QWTableViewAdapter.h; sourceTree = "<group>"; };
 		B63AA8721841AAB8E4953AECF41FA1BE /* QWListKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QWListKit.modulemap; sourceTree = "<group>"; };
-		B643EAF821EB01F089C31AD4B30EDA9B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		B643EAF821EB01F089C31AD4B30EDA9B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B900511D260806138E43EC0D965F8222 /* QWListSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWListSection.m; path = QWListKit/Classes/QWListSection.m; sourceTree = "<group>"; };
 		BA48E38D0A1993B8FE2DD1E9C16F16E4 /* QWListKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QWListKit-prefix.pch"; sourceTree = "<group>"; };
 		BC2AB21881361F49D14CCB29C4AE30B9 /* Pods-QWListKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QWListKit_Tests.modulemap"; sourceTree = "<group>"; };
@@ -214,14 +214,14 @@
 		D31D6C0B0591D50EE934DB3A866E4537 /* QWListKit */ = {
 			isa = PBXGroup;
 			children = (
-				E8C341CF1A82805988995FDC0068BFCD /* QWCollectionViewAdapter.h */,
-				3BE41FCF9C3A8B18308DD8C2B213C965 /* QWCollectionViewAdapter.m */,
-				81F1054AD9BAF8263B6B1B922D486BA1 /* QWListItem.h */,
 				4435E2DEBF0F396785993AC3E105EC6F /* QWListKit.h */,
+				81F1054AD9BAF8263B6B1B922D486BA1 /* QWListItem.h */,
 				D8DBC85555D266348F349605555251B4 /* QWListSection.h */,
 				B900511D260806138E43EC0D965F8222 /* QWListSection.m */,
 				A85CF3D886E7F8B2786AB86E13A42593 /* QWTableViewAdapter.h */,
 				E2A1BB1B6B54834BBEBE3489B2EFF2A9 /* QWTableViewAdapter.m */,
+				E8C341CF1A82805988995FDC0068BFCD /* QWCollectionViewAdapter.h */,
+				3BE41FCF9C3A8B18308DD8C2B213C965 /* QWCollectionViewAdapter.m */,
 				1031187B6B6EF0D84CB3F979542EA294 /* UIView+QWListKit.h */,
 				1478C7875F1A5F162C14F2DD3799F86C /* UIView+QWListKit.m */,
 				786DBC6F9462B0D4B5F66C40AD4476F0 /* Pod */,
@@ -622,8 +622,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

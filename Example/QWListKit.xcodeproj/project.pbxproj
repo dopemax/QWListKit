@@ -15,6 +15,9 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		756B35BBC2C234C457A7C251 /* Pods_QWListKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A63AD4BEF0985289549685 /* Pods_QWListKit_Tests.framework */; };
+		AC13508223A1F2B600AF275E /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13508123A1F2B600AF275E /* FeedItem.swift */; };
+		AC13508823A1F3AA00AF275E /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13508723A1F3AA00AF275E /* LabelCell.swift */; };
+		AC13508A23A2073C00AF275E /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13508923A2073C00AF275E /* ImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +32,8 @@
 
 /* Begin PBXFileReference section */
 		0FAAA5E1885853FB60BAD885 /* Pods-QWListKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QWListKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-QWListKit_Tests/Pods-QWListKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		493FC52B479F590654440578 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		50D21F640D2503AEBF4ED461 /* QWListKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = QWListKit.podspec; path = ../QWListKit.podspec; sourceTree = "<group>"; };
+		493FC52B479F590654440578 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		50D21F640D2503AEBF4ED461 /* QWListKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = QWListKit.podspec; path = ../QWListKit.podspec; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* QWListKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QWListKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,8 +44,12 @@
 		607FACE51AFB9204008FA782 /* QWListKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QWListKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		7879F020EB7147C461039E8F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7879F020EB7147C461039E8F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		83E89B0890AAD0E0A209A643 /* Pods_QWListKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QWListKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC13508123A1F2B600AF275E /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		AC13508323A1F33800AF275E /* QWListKit_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QWListKit_Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		AC13508723A1F3AA00AF275E /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		AC13508923A2073C00AF275E /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		C74ADF5A0EA056CA6B534CBF /* Pods-QWListKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QWListKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-QWListKit_Tests/Pods-QWListKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CCC4AF9AB389B02BDDF540CD /* Pods-QWListKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QWListKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-QWListKit_Example/Pods-QWListKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		DA25CDB589EB0985A73C1B4D /* Pods-QWListKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QWListKit_Example.release.xcconfig"; path = "Target Support Files/Pods-QWListKit_Example/Pods-QWListKit_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,9 +111,13 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				AC13508123A1F2B600AF275E /* FeedItem.swift */,
+				AC13508723A1F3AA00AF275E /* LabelCell.swift */,
+				AC13508923A2073C00AF275E /* ImageCell.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				AC13508323A1F33800AF275E /* QWListKit_Example-Bridging-Header.h */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for QWListKit";
@@ -156,7 +167,6 @@
 				0FAAA5E1885853FB60BAD885 /* Pods-QWListKit_Tests.debug.xcconfig */,
 				C74ADF5A0EA056CA6B534CBF /* Pods-QWListKit_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,11 +219,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = CocoaPods;
+				ORGANIZATIONNAME = guawaji;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1110;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -227,6 +237,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -333,6 +344,9 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				AC13508823A1F3AA00AF275E /* LabelCell.swift in Sources */,
+				AC13508223A1F2B600AF275E /* FeedItem.swift in Sources */,
+				AC13508A23A2073C00AF275E /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,11 +492,14 @@
 			baseConfigurationReference = CCC4AF9AB389B02BDDF540CD /* Pods-QWListKit_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = QWListKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "QWListKit/QWListKit_Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -493,11 +510,13 @@
 			baseConfigurationReference = DA25CDB589EB0985A73C1B4D /* Pods-QWListKit_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = QWListKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "QWListKit/QWListKit_Example-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

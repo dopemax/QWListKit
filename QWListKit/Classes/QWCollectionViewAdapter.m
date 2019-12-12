@@ -12,7 +12,7 @@
 
 @interface QWCollectionViewAdapter () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSArray<QWListSection *> *sections;
+@property (nonatomic, copy) NSArray<QWListSection *> *sections;
 
 @end
 
@@ -34,7 +34,7 @@
 }
 
 - (void)reloadListData {
-    _sections = [self.dataSource sectionsForListAdapter:self];
+    self.sections = [self.dataSource sectionsForListAdapter:self];
     [_collectionView reloadData];
     UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
     if (backgroundView != _collectionView.backgroundView) {
@@ -88,10 +88,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
-    if ([item respondsToSelector:@selector(viewSize)]) {
-        return item.viewSize;
-    }
-    return CGSizeZero;
+    return item.viewSize;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -124,18 +121,12 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     id<QWListItem> item = self.sections[section].header;
-    if ([item respondsToSelector:@selector(viewSize)]) {
-        return item.viewSize;
-    }
-    return CGSizeZero;
+    return item.viewSize;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     id<QWListItem> item = self.sections[section].footer;
-    if ([item respondsToSelector:@selector(viewSize)]) {
-        return item.viewSize;
-    }
-    return CGSizeZero;
+    return item.viewSize;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

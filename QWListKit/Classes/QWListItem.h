@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol QWListBindable;
 
-@protocol QWListItem <NSObject>
+@protocol QWListItem
 
 - (Class<QWListBindable>)viewClass;
 - (NSString *)viewReuseIdentifier;
