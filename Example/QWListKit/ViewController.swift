@@ -25,11 +25,7 @@ class ViewController: UIViewController {
     }()
     lazy var adapter = QWTableViewAdapter(tableView: tableView)
     
-    let demoSection: QWListSection = {
-        let section = QWListSection()
-        section.items = NSMutableArray(array: [FeedItem]())
-        return section
-    }()
+    let demoSection = QWListSection()
     
     override func viewDidLoad() {
         super.viewDidLoad()
