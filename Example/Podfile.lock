@@ -1,0 +1,16 @@
+PODS:
+  - QWListKit (0.1.0)
+
+DEPENDENCIES:
+  - QWListKit (from `../`)
+
+EXTERNAL SOURCES:
+  QWListKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  QWListKit: f54c04a7be798cb74b07b5462ffbe668349b950e
+
+PODFILE CHECKSUM: eea4fd5cb268c35122660216111d7abf8ab2824f
+
+COCOAPODS: 1.8.4
