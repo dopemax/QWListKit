@@ -45,6 +45,8 @@ typedef void (^QWListConfigureFooterViewBlock)(__kindof UIView *footerView, NSUI
 @property (nonatomic, copy) BOOL (^canMoveItemBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^moveItemBlock)(__kindof UITableView *tableView, NSIndexPath *sourceIndexPath, id<QWListItem> sourceItem, NSIndexPath *destinationIndexPath, id<QWListItem> destinationItem);
 
+@property (nonatomic, copy) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
+
 - (void)reloadListData;
 
 @end

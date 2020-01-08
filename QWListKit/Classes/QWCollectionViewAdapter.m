@@ -152,6 +152,12 @@
     }
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.scrollViewDidScrollBlock) {
+        self.scrollViewDidScrollBlock(scrollView);
+    }
+}
+
 @end
 
 
@@ -160,6 +166,7 @@
 @implementation UICollectionView (QWListKit)
 
 - (void)qw_registerClassIfFromNib:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier {
+    NSAssert([cellClass isKindOfClass:UICollectionViewCell.class], @"cellClass must be kind of UICollectionViewCell");
     if ([cellClass qw_isFromNib]) {
         NSBundle *bundle = [NSBundle bundleForClass:cellClass];
         [self registerNib:[UINib nibWithNibName:cellClass.qw_className bundle:bundle] forCellWithReuseIdentifier:identifier];

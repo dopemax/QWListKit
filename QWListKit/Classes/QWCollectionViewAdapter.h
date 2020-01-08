@@ -37,6 +37,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) BOOL (^canMoveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^moveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *sourceIndexPath, id<QWListItem> sourceItem, NSIndexPath *destinationIndexPath, id<QWListItem> destinationItem);
 
+@property (nonatomic, copy) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
+
+- (void)reloadListData;
 
 @end
 
