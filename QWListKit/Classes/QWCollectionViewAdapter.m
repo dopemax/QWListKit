@@ -36,12 +36,15 @@
 - (void)reloadListData {
     self.sections = [self.dataSource sectionsForListAdapter:self];
     [_collectionView reloadData];
-    UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
-    if (backgroundView != _collectionView.backgroundView) {
-        [_collectionView.backgroundView removeFromSuperview];
-        _collectionView.backgroundView = backgroundView;
+    
+    if ([self.dataSource respondsToSelector:@selector(emptyViewForListAdapter:)]) {
+        UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
+        if (backgroundView != _collectionView.backgroundView) {
+            [_collectionView.backgroundView removeFromSuperview];
+            _collectionView.backgroundView = backgroundView;
+        }
+        _collectionView.backgroundView.hidden = ![_collectionView qw_listIsEmpty];
     }
-    _collectionView.backgroundView.hidden = ![_collectionView qw_listIsEmpty];
 }
 
 #pragma mark - Collection view data source & Collection view delegate
@@ -166,7 +169,7 @@
 @implementation UICollectionView (QWListKit)
 
 - (void)qw_registerClassIfFromNib:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier {
-    NSAssert([cellClass isKindOfClass:UICollectionViewCell.class], @"cellClass must be kind of UICollectionViewCell");
+    NSAssert([cellClass isSubclassOfClass:UICollectionViewCell.class], @"cellClass must be subclass of UICollectionViewCell");
     if ([cellClass qw_isFromNib]) {
         NSBundle *bundle = [NSBundle bundleForClass:cellClass];
         [self registerNib:[UINib nibWithNibName:cellClass.qw_className bundle:bundle] forCellWithReuseIdentifier:identifier];

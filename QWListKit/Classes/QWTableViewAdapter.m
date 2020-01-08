@@ -36,12 +36,15 @@
 - (void)reloadListData {
     self.sections = [self.dataSource sectionsForListAdapter:self];
     [_tableView reloadData];
-    UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
-    if (backgroundView != _tableView.backgroundView) {
-        [_tableView.backgroundView removeFromSuperview];
-        _tableView.backgroundView = backgroundView;
+    
+    if ([self.dataSource respondsToSelector:@selector(emptyViewForListAdapter:)]) {
+        UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
+        if (backgroundView != _tableView.backgroundView) {
+            [_tableView.backgroundView removeFromSuperview];
+            _tableView.backgroundView = backgroundView;
+        }
+        _tableView.backgroundView.hidden = ![_tableView qw_listIsEmpty];
     }
-    _tableView.backgroundView.hidden = ![_tableView qw_listIsEmpty];
 }
 
 #pragma mark - Table view data source & Table view delegate
@@ -204,7 +207,7 @@
 @implementation UITableView (QWListKit)
 
 - (void)qw_registerClassIfFromNib:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
-    NSAssert([cellClass isKindOfClass:UITableViewCell.class], @"cellClass must be kind of UITableViewCell");
+    NSAssert([cellClass isSubclassOfClass:UITableViewCell.class], @"cellClass must be subclass of UITableViewCell");
     if ([cellClass qw_isFromNib]) {
         NSBundle *bundle = [NSBundle bundleForClass:cellClass];
         [self registerNib:[UINib nibWithNibName:cellClass.qw_className bundle:bundle] forCellReuseIdentifier:identifier];

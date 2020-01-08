@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol QWTableViewAdapterDataSource <NSObject>
 
 - (NSArray<QWListSection *> *)sectionsForListAdapter:(QWTableViewAdapter *)listAdapter;
+
+@optional
 - (nullable UIView *)emptyViewForListAdapter:(QWTableViewAdapter *)listAdapter;
 
 @end
