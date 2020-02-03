@@ -34,11 +34,11 @@
 }
 
 - (void)reloadListData {
-    self.sections = [self.dataSource sectionsForListAdapter:self];
+    self.sections = [self.dataSource sectionsForTableViewAdapter:self];
     [_tableView reloadData];
     
-    if ([self.dataSource respondsToSelector:@selector(emptyViewForListAdapter:)]) {
-        UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
+    if ([self.dataSource respondsToSelector:@selector(emptyViewForTableViewAdapter:)]) {
+        UIView *backgroundView = [self.dataSource emptyViewForTableViewAdapter:self];
         if (backgroundView != _tableView.backgroundView) {
             [_tableView.backgroundView removeFromSuperview];
             _tableView.backgroundView = backgroundView;

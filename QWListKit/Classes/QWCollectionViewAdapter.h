@@ -16,10 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol QWCollectionViewAdapterDataSource <NSObject>
 
-- (NSArray<QWListSection *> *)sectionsForListAdapter:(QWCollectionViewAdapter *)listAdapter;
+- (NSArray<QWListSection *> *)sectionsForCollectionViewAdapter:(QWCollectionViewAdapter *)adapter;
 
 @optional
-- (nullable UIView *)emptyViewForListAdapter:(QWCollectionViewAdapter *)listAdapter;
+- (nullable UIView *)emptyViewForCollectionViewAdapter:(QWCollectionViewAdapter *)adapter;
 
 @end
 
