@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol QWTableViewAdapterDataSource <NSObject>
 
 - (NSArray<QWListSection *> *)sectionsForListAdapter:(QWTableViewAdapter *)listAdapter;
+
+@optional
 - (nullable UIView *)emptyViewForListAdapter:(QWTableViewAdapter *)listAdapter;
 
 @end
@@ -44,6 +46,8 @@ typedef void (^QWListConfigureFooterViewBlock)(__kindof UIView *footerView, NSUI
 @property (nonatomic, copy) void * (^commitEditingStyleBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) BOOL (^canMoveItemBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^moveItemBlock)(__kindof UITableView *tableView, NSIndexPath *sourceIndexPath, id<QWListItem> sourceItem, NSIndexPath *destinationIndexPath, id<QWListItem> destinationItem);
+
+@property (nonatomic, copy) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
 
 - (void)reloadListData;
 

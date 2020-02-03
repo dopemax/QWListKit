@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol QWListItem
 
-- (Class<QWListBindable>)viewClass;
+- (nullable Class<QWListBindable>)viewClass;
 - (NSString *)viewReuseIdentifier;
 - (CGSize)viewSize;
 - (id)viewModel;
