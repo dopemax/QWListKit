@@ -34,11 +34,11 @@
 }
 
 - (void)reloadListData {
-    self.sections = [self.dataSource sectionsForListAdapter:self];
+    self.sections = [self.dataSource sectionsForCollectionViewAdapter:self];
     [_collectionView reloadData];
     
-    if ([self.dataSource respondsToSelector:@selector(emptyViewForListAdapter:)]) {
-        UIView *backgroundView = [self.dataSource emptyViewForListAdapter:self];
+    if ([self.dataSource respondsToSelector:@selector(emptyViewForCollectionViewAdapter:)]) {
+        UIView *backgroundView = [self.dataSource emptyViewForCollectionViewAdapter:self];
         if (backgroundView != _collectionView.backgroundView) {
             [_collectionView.backgroundView removeFromSuperview];
             _collectionView.backgroundView = backgroundView;
