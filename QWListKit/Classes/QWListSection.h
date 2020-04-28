@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) CGFloat minimumLineSpacing;
 @property (nonatomic) CGFloat minimumInteritemSpacing;
-@property (nonatomic) UIEdgeInsets sectionInset;
+@property (nonatomic) UIEdgeInsets inset;
 
 @end
 

@@ -26,6 +26,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
+@interface UITableView (QWListKit)
+
+- (void)qw_registerClassIfFromNib:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
+- (void)qw_registerClassIfFromNib:(Class)viewClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier;
+
+- (BOOL)qw_listIsEmpty;
+- (NSUInteger)qw_listItemsCount;
+
+@end
+
+
+
+@interface UICollectionView (QWListKit)
+
+- (void)qw_registerClassIfFromNib:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
+- (void)qw_registerClassIfFromNib:(Class)viewClass forSupplementaryViewOfKind:(NSString *)kind withReuseIdentifier:(NSString *)identifier;
+
+- (BOOL)qw_listIsEmpty;
+- (NSUInteger)qw_listItemsCount;
+
+@end
+
 
 
 @interface UITableViewCell (QWListKit)
@@ -43,8 +65,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSIndexPath *)qw_indexPath;
 
 @end
-
-
 
 
 

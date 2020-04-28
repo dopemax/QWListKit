@@ -14,16 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol QWListItem
 
-- (nullable Class<QWListBindable>)viewClass;
+- (Class<QWListBindable>)viewClass;
 - (NSString *)viewReuseIdentifier;
 - (CGSize)viewSize;
 - (id)viewModel;
-
-@optional
-/// 计算布局
-- (void)layout;
-/// 缓存到内存的size
-@property (nonatomic) CGSize cachedSize;
 
 @end
 

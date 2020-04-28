@@ -23,10 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-typedef void (^QWListConfigureHeaderViewBlock)(__kindof UIView *headerView, NSUInteger section, id<QWListItem> item);
-typedef void (^QWListConfigureFooterViewBlock)(__kindof UIView *footerView, NSUInteger section, id<QWListItem> item);
 
-@interface QWTableViewAdapter : NSObject
+
+@interface QWTableViewAdapter : NSObject <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) NSArray<NSString *> *sectionIndexTitles;
 
 - (instancetype)initWithTableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
@@ -36,9 +37,9 @@ typedef void (^QWListConfigureFooterViewBlock)(__kindof UIView *footerView, NSUI
 @property (nonatomic, weak, readonly) __kindof UITableView *tableView;
 @property (nonatomic, weak) id<QWTableViewAdapterDataSource> dataSource;
 
-@property (nonatomic, copy) void (^configureCellBlock)(__kindof UITableViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) QWListConfigureHeaderViewBlock configureHeaderViewBlock;
-@property (nonatomic, copy) QWListConfigureFooterViewBlock configureFooterViewBlock;
+@property (nonatomic, copy) void (^willDisplayCellBlock)(__kindof UITableView *tableView, __kindof UITableViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
+@property (nonatomic, copy) void (^willDisplayHeaderViewBlock)(__kindof UITableView *tableView, __kindof UIView *headerView, NSUInteger section, id<QWListItem> item);
+@property (nonatomic, copy) void (^willDisplayFooterViewBlock)(__kindof UITableView *tableView, __kindof UIView *footerView, NSUInteger section, id<QWListItem> item);
 @property (nonatomic, copy) void (^didSelectRowBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) BOOL (^canEditRowBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) UITableViewCellEditingStyle (^editingStyleForRowBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
@@ -48,22 +49,12 @@ typedef void (^QWListConfigureFooterViewBlock)(__kindof UIView *footerView, NSUI
 @property (nonatomic, copy) void (^moveItemBlock)(__kindof UITableView *tableView, NSIndexPath *sourceIndexPath, id<QWListItem> sourceItem, NSIndexPath *destinationIndexPath, id<QWListItem> destinationItem);
 
 @property (nonatomic, copy) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^scrollViewWillBeginDraggingBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^scrollViewDidEndDraggingBlock)(UIScrollView *scrollView, BOOL decelerate);
+@property (nonatomic, copy) void (^scrollViewDidEndDeceleratingBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^scrollViewDidScrollToTopBlock)(UIScrollView *scrollView);
 
 - (void)reloadListData;
-
-@end
-
-
-
-
-
-@interface UITableView (QWListKit)
-
-- (void)qw_registerClassIfFromNib:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
-- (void)qw_registerClassIfFromNib:(Class)viewClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier;
-
-- (BOOL)qw_listIsEmpty;
-- (NSUInteger)qw_listItemsCount;
 
 @end
 

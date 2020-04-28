@@ -23,7 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface QWCollectionViewAdapter : NSObject
+
+
+@interface QWCollectionViewAdapter : NSObject <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView NS_DESIGNATED_INITIALIZER;
 
@@ -33,27 +35,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, readonly) __kindof UICollectionView *collectionView;
 @property (nonatomic, weak) id<QWCollectionViewAdapterDataSource> dataSource;
 
-@property (nonatomic, copy) void (^configureCellBlock)(__kindof UICollectionViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) void (^configureSupplementaryViewBlock)(__kindof UICollectionReusableView *view, NSString *kind, NSIndexPath *indexPath, id<QWListItem> item);
+@property (nonatomic, copy) void (^willDisplayCellBlock)(__kindof UICollectionView *collectionView, __kindof UICollectionViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
+@property (nonatomic, copy) void (^willDisplaySupplementaryViewBlock)(__kindof UICollectionView *collectionView, __kindof UICollectionReusableView *view, NSString *kind, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^didSelectRowBlock)(__kindof UICollectionView *collectionView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) BOOL (^canMoveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^moveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *sourceIndexPath, id<QWListItem> sourceItem, NSIndexPath *destinationIndexPath, id<QWListItem> destinationItem);
 
 @property (nonatomic, copy) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^scrollViewWillBeginDraggingBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^scrollViewDidEndDraggingBlock)(UIScrollView *scrollView, BOOL decelerate);
+@property (nonatomic, copy) void (^scrollViewDidEndDeceleratingBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy) void (^scrollViewDidScrollToTopBlock)(UIScrollView *scrollView);
 
 - (void)reloadListData;
-
-@end
-
-
-
-@interface UICollectionView (QWListKit)
-
-- (void)qw_registerClassIfFromNib:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
-- (void)qw_registerClassIfFromNib:(Class)viewClass forSupplementaryViewOfKind:(NSString *)kind withReuseIdentifier:(NSString *)identifier;
-
-- (BOOL)qw_listIsEmpty;
-- (NSUInteger)qw_listItemsCount;
 
 @end
 

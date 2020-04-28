@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import "UIView+QWListKit.h"
 
-@interface QWTableViewAdapter () <UITableViewDelegate, UITableViewDataSource>
+@interface QWTableViewAdapter ()
 
 @property (nonatomic, copy) NSArray<QWListSection *> *sections;
 
@@ -31,6 +31,13 @@
         _sections = @[];
     }
     return self;
+}
+
+- (void)setDataSource:(id<QWTableViewAdapterDataSource>)dataSource {
+    if (_dataSource != dataSource) {
+        _dataSource = dataSource;
+        [self reloadListData];
+    }
 }
 
 - (void)reloadListData {
@@ -65,16 +72,20 @@
         [_registeredCellReuseIdentifierSet addObject:reuseIdentifier];
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
     if ([cell conformsToProtocol:@protocol(QWListBindable)]) {
         id<QWListBindable> bindable = (id<QWListBindable>)cell;
         if ([bindable respondsToSelector:@selector(bindItem:)]) {
             [bindable bindItem:item];
         }
     }
-    if (self.configureCellBlock) {
-        self.configureCellBlock(cell, indexPath, item);
+    if (self.willDisplayCellBlock) {
+        self.willDisplayCellBlock(tableView, cell, indexPath, item);
     }
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,17 +101,22 @@
         [tableView qw_registerClassIfFromNib:item.viewClass forHeaderFooterViewReuseIdentifier:reuseIdentifier];
         [_registeredHeaderFooterReuseIdentifierSet addObject:reuseIdentifier];
     }
-    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifier];
-    if ([headerView conformsToProtocol:@protocol(QWListBindable)]) {
-        id<QWListBindable> bindable = (id<QWListBindable>)headerView;
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifier];
+    return view;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    id<QWListItem> item = self.sections[section].header;
+    if (!item) return;
+    if ([view conformsToProtocol:@protocol(QWListBindable)]) {
+        id<QWListBindable> bindable = (id<QWListBindable>)view;
         if ([bindable respondsToSelector:@selector(bindItem:)]) {
             [bindable bindItem:item];
         }
     }
-    if (self.configureHeaderViewBlock) {
-        self.configureHeaderViewBlock(headerView, section, item);
+    if (self.willDisplayHeaderViewBlock) {
+        self.willDisplayHeaderViewBlock(tableView, view, section, item);
     }
-    return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -117,17 +133,22 @@
         [tableView qw_registerClassIfFromNib:item.viewClass forHeaderFooterViewReuseIdentifier:reuseIdentifier];
         [_registeredHeaderFooterReuseIdentifierSet addObject:reuseIdentifier];
     }
-    UITableViewHeaderFooterView *footerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifier];
-    if ([footerView conformsToProtocol:@protocol(QWListBindable)]) {
-        id<QWListBindable> bindable = (id<QWListBindable>)footerView;
+    UITableViewHeaderFooterView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:reuseIdentifier];
+    return view;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
+    id<QWListItem> item = self.sections[section].footer;
+    if (!item) return;
+    if ([view conformsToProtocol:@protocol(QWListBindable)]) {
+        id<QWListBindable> bindable = (id<QWListBindable>)view;
         if ([bindable respondsToSelector:@selector(bindItem:)]) {
             [bindable bindItem:item];
         }
     }
-    if (self.configureFooterViewBlock) {
-        self.configureFooterViewBlock(footerView, section, item);
+    if (self.willDisplayFooterViewBlock) {
+        self.willDisplayFooterViewBlock(tableView, view, section, item);
     }
-    return footerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -141,6 +162,10 @@
     if (self.didSelectRowBlock) {
         self.didSelectRowBlock(tableView, indexPath, item);
     }
+}
+
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return _sectionIndexTitles;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -196,55 +221,28 @@
     }
 }
 
-@end
-
-
-
-
-
-
-
-@implementation UITableView (QWListKit)
-
-- (void)qw_registerClassIfFromNib:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
-    NSAssert([cellClass isSubclassOfClass:UITableViewCell.class], @"cellClass must be subclass of UITableViewCell");
-    if ([cellClass qw_isFromNib]) {
-        NSBundle *bundle = [NSBundle bundleForClass:cellClass];
-        [self registerNib:[UINib nibWithNibName:cellClass.qw_className bundle:bundle] forCellReuseIdentifier:identifier];
-    } else {
-        [self registerClass:cellClass forCellReuseIdentifier:identifier];
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (self.scrollViewWillBeginDraggingBlock) {
+        self.scrollViewWillBeginDraggingBlock(scrollView);
     }
 }
 
-- (void)qw_registerClassIfFromNib:(Class)viewClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier {
-    if ([viewClass qw_isFromNib]) {
-        NSBundle *bundle = [NSBundle bundleForClass:viewClass];
-        [self registerNib:[UINib nibWithNibName:viewClass.qw_className bundle:bundle] forHeaderFooterViewReuseIdentifier:identifier];
-    } else {
-        [self registerClass:viewClass forHeaderFooterViewReuseIdentifier:identifier];
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (self.scrollViewDidEndDraggingBlock) {
+        self.scrollViewDidEndDraggingBlock(scrollView, decelerate);
     }
 }
 
-- (BOOL)qw_listIsEmpty {
-    __block BOOL isEmpty = true;
-    const NSInteger sections = [self.dataSource numberOfSectionsInTableView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        if ([self.dataSource tableView:self numberOfRowsInSection:section] > 0) {
-            isEmpty = false;
-            break;
-        }
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.scrollViewDidEndDeceleratingBlock) {
+        self.scrollViewDidEndDeceleratingBlock(scrollView);
     }
-    return isEmpty;
 }
 
-- (NSUInteger)qw_listItemsCount {
-    __block NSUInteger listItemsCount = 0;
-    const NSInteger sections = [self.dataSource numberOfSectionsInTableView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        const NSInteger rows = [self.dataSource tableView:self numberOfRowsInSection:section];
-        listItemsCount += rows;
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    if (self.scrollViewDidScrollToTopBlock) {
+        self.scrollViewDidScrollToTopBlock(scrollView);
     }
-    return listItemsCount;
 }
 
 @end

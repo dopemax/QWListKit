@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #import "UIView+QWListKit.h"
 
-@interface QWCollectionViewAdapter () <UICollectionViewDelegateFlowLayout, UICollectionViewDataSource>
+@interface QWCollectionViewAdapter ()
 
 @property (nonatomic, copy) NSArray<QWListSection *> *sections;
 
@@ -18,7 +18,8 @@
 
 @implementation QWCollectionViewAdapter {
     NSMutableSet *_registeredCellReuseIdentifierSet;
-    NSMutableSet *_registeredHeaderFooterReuseIdentifierSet;
+    NSMutableSet *_registeredHeaderReuseIdentifierSet;
+    NSMutableSet *_registeredFooterReuseIdentifierSet;
 }
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView {
@@ -27,10 +28,18 @@
         collectionView.dataSource = self;
         collectionView.delegate = self;
         _registeredCellReuseIdentifierSet = NSMutableSet.new;
-        _registeredHeaderFooterReuseIdentifierSet = NSMutableSet.new;
+        _registeredHeaderReuseIdentifierSet = NSMutableSet.new;
+        _registeredFooterReuseIdentifierSet = NSMutableSet.new;
         _sections = @[];
     }
     return self;
+}
+
+- (void)setDataSource:(id<QWCollectionViewAdapterDataSource>)dataSource {
+    if (_dataSource != dataSource) {
+        _dataSource = dataSource;
+        [self reloadListData];
+    }
 }
 
 - (void)reloadListData {
@@ -66,7 +75,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return self.sections[section].sectionInset;
+    return self.sections[section].inset;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,16 +86,20 @@
         [_registeredCellReuseIdentifierSet addObject:reuseIdentifier];
     }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
     if ([cell conformsToProtocol:@protocol(QWListBindable)]) {
         id<QWListBindable> temp = (id<QWListBindable>)cell;
         if ([temp respondsToSelector:@selector(bindItem:)]) {
             [temp bindItem:item];
         }
     }
-    if (self.configureCellBlock) {
-        self.configureCellBlock(cell, indexPath, item);
+    if (self.willDisplayCellBlock) {
+        self.willDisplayCellBlock(collectionView, cell, indexPath, item);
     }
-    return cell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -97,29 +110,44 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     QWListSection *section = self.sections[indexPath.section];
     id<QWListItem> item;
+    NSMutableSet *set;
     if (kind == UICollectionElementKindSectionHeader) {
         item = section.header;
+        set = _registeredHeaderReuseIdentifierSet;
     } else if (kind == UICollectionElementKindSectionFooter) {
         item = section.footer;
+        set = _registeredFooterReuseIdentifierSet;
     } else {
         return nil;
     }
     NSString *reuseIdentifier = item.viewReuseIdentifier;
-    if (![_registeredHeaderFooterReuseIdentifierSet containsObject:reuseIdentifier]) {
+    if (![set containsObject:reuseIdentifier]) {
         [collectionView qw_registerClassIfFromNib:item.viewClass forSupplementaryViewOfKind:kind withReuseIdentifier:reuseIdentifier];
-        [_registeredHeaderFooterReuseIdentifierSet addObject:reuseIdentifier];
+        [set addObject:reuseIdentifier];
     }
-    UICollectionReusableView *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    if ([reusableView conformsToProtocol:@protocol(QWListBindable)]) {
-        id<QWListBindable> bindable = (id<QWListBindable>)reusableView;
+    UICollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    return view;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
+    QWListSection *section = self.sections[indexPath.section];
+    id<QWListItem> item;
+    if (elementKind == UICollectionElementKindSectionHeader) {
+        item = section.header;
+    } else if (elementKind == UICollectionElementKindSectionFooter) {
+        item = section.footer;
+    } else {
+        return;
+    }
+    if ([view conformsToProtocol:@protocol(QWListBindable)]) {
+        id<QWListBindable> bindable = (id<QWListBindable>)view;
         if ([bindable respondsToSelector:@selector(bindItem:)]) {
             [bindable bindItem:item];
         }
     }
-    if (self.configureSupplementaryViewBlock) {
-        self.configureSupplementaryViewBlock(reusableView, kind, indexPath, item);
+    if (self.willDisplaySupplementaryViewBlock) {
+        self.willDisplaySupplementaryViewBlock(collectionView, view, elementKind, indexPath, item);
     }
-    return reusableView;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
@@ -161,52 +189,28 @@
     }
 }
 
-@end
-
-
-
-
-@implementation UICollectionView (QWListKit)
-
-- (void)qw_registerClassIfFromNib:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier {
-    NSAssert([cellClass isSubclassOfClass:UICollectionViewCell.class], @"cellClass must be subclass of UICollectionViewCell");
-    if ([cellClass qw_isFromNib]) {
-        NSBundle *bundle = [NSBundle bundleForClass:cellClass];
-        [self registerNib:[UINib nibWithNibName:cellClass.qw_className bundle:bundle] forCellWithReuseIdentifier:identifier];
-    } else {
-        [self registerClass:cellClass forCellWithReuseIdentifier:identifier];
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (self.scrollViewWillBeginDraggingBlock) {
+        self.scrollViewWillBeginDraggingBlock(scrollView);
     }
 }
 
-- (void)qw_registerClassIfFromNib:(Class)viewClass forSupplementaryViewOfKind:(NSString *)kind withReuseIdentifier:(NSString *)identifier {
-    if ([viewClass qw_isFromNib]) {
-        NSBundle *bundle = [NSBundle bundleForClass:viewClass];
-        [self registerNib:[UINib nibWithNibName:viewClass.qw_className bundle:bundle] forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
-    } else {
-        [self registerClass:viewClass forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    if (self.scrollViewDidEndDraggingBlock) {
+        self.scrollViewDidEndDraggingBlock(scrollView, decelerate);
     }
 }
 
-- (BOOL)qw_listIsEmpty {
-    __block BOOL isEmpty = true;
-    const NSInteger sections = [self.dataSource numberOfSectionsInCollectionView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        if ([self.dataSource collectionView:self numberOfItemsInSection:section] > 0) {
-            isEmpty = false;
-            break;
-        }
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (self.scrollViewDidEndDeceleratingBlock) {
+        self.scrollViewDidEndDeceleratingBlock(scrollView);
     }
-    return isEmpty;
 }
 
-- (NSUInteger)qw_listItemsCount {
-    __block NSUInteger listItemsCount = 0;
-    const NSInteger sections = [self.dataSource numberOfSectionsInCollectionView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        const NSInteger rows = [self.dataSource collectionView:self numberOfItemsInSection:section];
-        listItemsCount += rows;
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+    if (self.scrollViewDidScrollToTopBlock) {
+        self.scrollViewDidScrollToTopBlock(scrollView);
     }
-    return listItemsCount;
 }
 
 @end
