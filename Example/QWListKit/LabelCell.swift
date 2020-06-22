@@ -44,7 +44,7 @@ class LabelCell: UITableViewCell {
 extension LabelCell: QWListBindable {
 
     func bindItem(_ item: QWListItem) {
-        guard let model = item.viewModel() as? FeedItem else { return }
+        guard let model = item as? FeedItem else { return }
         label.text = model.title
         label.numberOfLines = model.isExpanded ? 0 : 1
     }

@@ -26,6 +26,17 @@ final class FeedItem {
         layout()
     }
     
+    func layout() {
+        
+        let width = UIScreen.main.bounds.width
+        
+        if self.viewClass() == LabelCell.self {
+            cachedSize = isExpanded ? CGSize(width: width, height: LabelCell.textHeight(title, width: width)) : CGSize(width: width, height: LabelCell.singleLineHeight)
+        } else if self.viewClass() == ImageCell.self {
+            cachedSize = CGSize(width: width, height: 90)
+        }
+    }
+    
     var cachedSize: CGSize = .zero
     
     var isExpanded: Bool = false
@@ -50,18 +61,4 @@ extension FeedItem: QWListItem {
         return cachedSize
     }
     
-    func viewModel() -> Any {
-        return self
-    }
-    
-    func layout() {
-        
-        let width = UIScreen.main.bounds.width
-        
-        if self.viewClass() == LabelCell.self {
-            cachedSize = isExpanded ? CGSize(width: width, height: LabelCell.textHeight(title, width: width)) : CGSize(width: width, height: LabelCell.singleLineHeight)
-        } else if self.viewClass() == ImageCell.self {
-            cachedSize = CGSize(width: width, height: 90)
-        }
-    }
 }

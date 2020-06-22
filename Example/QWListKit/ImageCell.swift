@@ -49,7 +49,7 @@ class ImageCell: UITableViewCell {
 extension ImageCell: QWListBindable {
 
     func bindItem(_ item: QWListItem) {
-        guard let model = item.viewModel() as? FeedItem else { return }
+        guard let model = item as? FeedItem else { return }
         titleLabel.text = model.title
     }
 
