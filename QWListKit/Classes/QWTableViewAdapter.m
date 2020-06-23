@@ -33,13 +33,6 @@
     return self;
 }
 
-- (void)setDataSource:(id<QWTableViewAdapterDataSource>)dataSource {
-    if (_dataSource != dataSource) {
-        _dataSource = dataSource;
-        [self reloadListData];
-    }
-}
-
 - (void)reloadListData {
     self.sections = [self.dataSource sectionsForTableViewAdapter:self];
     [_tableView reloadData];
@@ -61,10 +54,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.sections[section].items.count;
+    QWListSection *sectionModel = self.sections[section];
+    return sectionModel.isCollapsed ? 1 : sectionModel.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    /*
+    Collapsable Sections: [Assert] Unable to determine new global row index for preReloadFirstVisibleRow (0)
+    
+    Solution:
+    https://stackoverflow.com/questions/58225727/collapsable-sections-assert-unable-to-determine-new-global-row-index-for-prer
+    */
+    if (self.sections[indexPath.section].isCollapsed) return UITableViewCell.new;
+    
     id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
     NSString *reuseIdentifier = item.viewReuseIdentifier;
     if (![_registeredCellReuseIdentifierSet containsObject:reuseIdentifier]) {
@@ -76,6 +78,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.sections[indexPath.section].isCollapsed) return;
+    
     id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
     if ([cell conformsToProtocol:@protocol(QWListBindable)]) {
         id<QWListBindable> bindable = (id<QWListBindable>)cell;
@@ -89,6 +93,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.sections[indexPath.section].isCollapsed) return 0.0;
+    
     id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
     return item.viewSize.height;
 }

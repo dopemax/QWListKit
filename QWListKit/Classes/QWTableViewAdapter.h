@@ -38,8 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<QWTableViewAdapterDataSource> dataSource;
 
 @property (nonatomic, copy) void (^willDisplayCellBlock)(__kindof UITableView *tableView, __kindof UITableViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) void (^willDisplayHeaderViewBlock)(__kindof UITableView *tableView, __kindof UIView *headerView, NSUInteger section, id<QWListItem> item);
-@property (nonatomic, copy) void (^willDisplayFooterViewBlock)(__kindof UITableView *tableView, __kindof UIView *footerView, NSUInteger section, id<QWListItem> item);
+@property (nonatomic, copy) void (^willDisplayHeaderViewBlock)(__kindof UITableView *tableView, __kindof UIView *headerView, NSInteger section, id<QWListItem> item);
+@property (nonatomic, copy) void (^willDisplayFooterViewBlock)(__kindof UITableView *tableView, __kindof UIView *footerView, NSInteger section, id<QWListItem> item);
 @property (nonatomic, copy) void (^didSelectRowBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) BOOL (^canEditRowBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) UITableViewCellEditingStyle (^editingStyleForRowBlock)(__kindof UITableView *tableView, NSIndexPath *indexPath, id<QWListItem> item);

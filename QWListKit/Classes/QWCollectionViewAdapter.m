@@ -35,13 +35,6 @@
     return self;
 }
 
-- (void)setDataSource:(id<QWCollectionViewAdapterDataSource>)dataSource {
-    if (_dataSource != dataSource) {
-        _dataSource = dataSource;
-        [self reloadListData];
-    }
-}
-
 - (void)reloadListData {
     self.sections = [self.dataSource sectionsForCollectionViewAdapter:self];
     [_collectionView reloadData];
@@ -63,7 +56,8 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.sections[section].items.count;
+    QWListSection *sectionModel = self.sections[section];
+    return sectionModel.isCollapsed ? 0 : sectionModel.items.count;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {

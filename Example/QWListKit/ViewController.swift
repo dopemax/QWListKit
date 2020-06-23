@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             let item = FeedItem(type: Bool.random() ? .type1 : .type2, title: titles[index % titles.count])
             demoSection.items.add(item)
         }
-        adapter.dataSource = self
+        adapter.reloadListData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     
     lazy var adapter: QWTableViewAdapter = {
         let adapter = QWTableViewAdapter(tableView: tableView)
+        adapter.dataSource = self
         adapter.didSelectRowBlock = { [unowned self] (tb, indexPath, item) in
             guard let model = item as? FeedItem else { return }
             tb.deselectRow(at: indexPath, animated: true)

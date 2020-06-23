@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<QWCollectionViewAdapterDataSource> dataSource;
 
 @property (nonatomic, copy) void (^willDisplayCellBlock)(__kindof UICollectionView *collectionView, __kindof UICollectionViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) void (^willDisplaySupplementaryViewBlock)(__kindof UICollectionView *collectionView, __kindof UICollectionReusableView *view, NSString *kind, NSIndexPath *indexPath, id<QWListItem> item);
+@property (nonatomic, copy) void (^willDisplaySupplementaryViewBlock)(__kindof UICollectionView *collectionView, __kindof UICollectionReusableView *view, NSString *elementKind, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^didSelectRowBlock)(__kindof UICollectionView *collectionView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) BOOL (^canMoveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^moveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *sourceIndexPath, id<QWListItem> sourceItem, NSIndexPath *destinationIndexPath, id<QWListItem> destinationItem);
