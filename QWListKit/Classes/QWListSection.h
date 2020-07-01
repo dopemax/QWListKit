@@ -17,12 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) id<QWListItem> footer;
 @property (nonatomic, strong) NSMutableArray<id<QWListItem>> *items;
 
-/// Determine whether the section is collapsed. Default is false.
-@property (nonatomic) BOOL isCollapsed;
-
 @property (nonatomic) CGFloat minimumLineSpacing;
 @property (nonatomic) CGFloat minimumInteritemSpacing;
 @property (nonatomic) UIEdgeInsets inset;
+
+/// Determine whether the section is collapsed. Default is false.
+@property (nonatomic) BOOL isCollapsed;
 
 @end
 

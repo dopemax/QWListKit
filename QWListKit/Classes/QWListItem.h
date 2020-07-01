@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Class<QWListBindable>)viewClass;
 - (NSString *)viewReuseIdentifier;
-- (CGSize)viewSize;
+- (CGSize (^)(CGSize))viewSizeBlock;
 
 @end
 

@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		0FAAA5E1885853FB60BAD885 /* Pods-QWListKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QWListKit_Tests.debug.xcconfig"; path = "Target Support Files/Pods-QWListKit_Tests/Pods-QWListKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		493FC52B479F590654440578 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		50D21F640D2503AEBF4ED461 /* QWListKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = QWListKit.podspec; path = ../QWListKit.podspec; sourceTree = "<group>"; };
+		50D21F640D2503AEBF4ED461 /* QWListKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = QWListKit.podspec; path = ../QWListKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		607FACD01AFB9204008FA782 /* QWListKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QWListKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

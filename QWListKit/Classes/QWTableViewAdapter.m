@@ -55,7 +55,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     QWListSection *sectionModel = self.sections[section];
-    return sectionModel.isCollapsed ? 1 : sectionModel.items.count;
+//    return sectionModel.isCollapsed ? 1 : sectionModel.items.count;
+    if (sectionModel.isCollapsed) {
+        return 1;
+    } else {
+        return [self _itemsForSection:section].count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -67,20 +72,24 @@
     */
     if (self.sections[indexPath.section].isCollapsed) return UITableViewCell.new;
     
-    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
+    NSMutableArray<id<QWListItem>> *items = [self _itemsForSection:indexPath.section];
+    id<QWListItem> item = items[indexPath.row];
     NSString *reuseIdentifier = item.viewReuseIdentifier;
     if (![_registeredCellReuseIdentifierSet containsObject:reuseIdentifier]) {
         [tableView qw_registerClassIfFromNib:item.viewClass forCellReuseIdentifier:reuseIdentifier];
         [_registeredCellReuseIdentifierSet addObject:reuseIdentifier];
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.qw_indexPath = indexPath;
+    cell.qw_isFirst = indexPath.row == 0;
+    cell.qw_isLast = indexPath.row == items.count - 1;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sections[indexPath.section].isCollapsed) return;
     
-    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if ([cell conformsToProtocol:@protocol(QWListBindable)]) {
         id<QWListBindable> bindable = (id<QWListBindable>)cell;
         if ([bindable respondsToSelector:@selector(bindItem:)]) {
@@ -95,8 +104,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.sections[indexPath.section].isCollapsed) return 0.0;
     
-    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
-    return item.viewSize.height;
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
+    return item.viewSizeBlock(tableView.bounds.size).height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -128,7 +137,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     id<QWListItem> item = self.sections[section].header;
     if (!item) return tableView.style == UITableViewStylePlain ? 0 : CGFLOAT_MIN;
-    return item.viewSize.height;
+    return item.viewSizeBlock(tableView.bounds.size).height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -160,11 +169,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     id<QWListItem> item = self.sections[section].footer;
     if (!item) return tableView.style == UITableViewStylePlain ? 0 : CGFLOAT_MIN;
-    return item.viewSize.height;
+    return item.viewSizeBlock(tableView.bounds.size).height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    id item = self.sections[indexPath.section].items[indexPath.row];
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if (self.didSelectRowBlock) {
         self.didSelectRowBlock(tableView, indexPath, item);
     }
@@ -175,7 +184,9 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    id item = self.sections[indexPath.section].items[indexPath.row];
+    if (self.sections[indexPath.section].isCollapsed) return false;
+    
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if (self.canEditRowBlock) {
         return self.canEditRowBlock(tableView, indexPath, item);
     }
@@ -183,7 +194,7 @@
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id item = self.sections[indexPath.section].items[indexPath.row];
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if (self.editingStyleForRowBlock) {
         return self.editingStyleForRowBlock(tableView, indexPath, item);
     }
@@ -191,7 +202,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    id item = self.sections[indexPath.section].items[indexPath.row];
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if (self.titleForDeleteConfirmationButtonForRowBlock) {
         return self.titleForDeleteConfirmationButtonForRowBlock(tableView, indexPath, item);
     }
@@ -199,14 +210,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    id item = self.sections[indexPath.section].items[indexPath.row];
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if (self.commitEditingStyleBlock) {
         self.commitEditingStyleBlock(tableView, indexPath, item);
     }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    id item = self.sections[indexPath.section].items[indexPath.row];
+    if (self.sections[indexPath.section].isCollapsed) return false;
+    
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if (self.canMoveItemBlock) {
         return self.canMoveItemBlock(tableView, indexPath, item);
     }
@@ -214,12 +227,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    id sourceItem = self.sections[sourceIndexPath.section].items[sourceIndexPath.row];
-    id destinationItem = self.sections[destinationIndexPath.section].items[destinationIndexPath.row];
+    id sourceItem = [self _itemsForSection:sourceIndexPath.section][sourceIndexPath.row];
+    id destinationItem = [self _itemsForSection:destinationIndexPath.section][destinationIndexPath.row];
     if (self.didSelectRowBlock) {
         self.moveItemBlock(tableView, sourceIndexPath, sourceItem, destinationIndexPath, destinationItem);
     }
 }
+
+#pragma mark Scroll view delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.scrollViewDidScrollBlock) {
@@ -249,6 +264,16 @@
     if (self.scrollViewDidScrollToTopBlock) {
         self.scrollViewDidScrollToTopBlock(scrollView);
     }
+}
+
+#pragma mark - private API
+
+- (NSMutableArray<id<QWListItem>> *)_itemsForSection:(NSInteger)section {
+    QWListSection *sectionModel = self.sections[section];
+    if (self.sectionItemsFilterBlock) {
+        return self.sectionItemsFilterBlock(sectionModel);
+    }
+    return sectionModel.items;
 }
 
 @end

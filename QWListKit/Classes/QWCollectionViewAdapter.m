@@ -57,7 +57,11 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     QWListSection *sectionModel = self.sections[section];
-    return sectionModel.isCollapsed ? 0 : sectionModel.items.count;
+    if (sectionModel.isCollapsed) {
+        return 0;
+    } else {
+        return [self _itemsForSection:section].count;
+    }
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
@@ -73,18 +77,26 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
+    if (self.sections[indexPath.section].isCollapsed) return UICollectionViewCell.new;
+    
+    NSMutableArray<id<QWListItem>> *items = [self _itemsForSection:indexPath.section];
+    id<QWListItem> item = items[indexPath.row];
     NSString *reuseIdentifier = item.viewReuseIdentifier;
     if (![_registeredCellReuseIdentifierSet containsObject:reuseIdentifier]) {
         [collectionView qw_registerClassIfFromNib:item.viewClass forCellWithReuseIdentifier:reuseIdentifier];
         [_registeredCellReuseIdentifierSet addObject:reuseIdentifier];
     }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.qw_indexPath = indexPath;
+    cell.qw_isFirst = indexPath.row == 0;
+    cell.qw_isLast = indexPath.row == items.count - 1;
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
+    if (self.sections[indexPath.section].isCollapsed) return;
+    
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if ([cell conformsToProtocol:@protocol(QWListBindable)]) {
         id<QWListBindable> temp = (id<QWListBindable>)cell;
         if ([temp respondsToSelector:@selector(bindItem:)]) {
@@ -97,8 +109,13 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    id<QWListItem> item = self.sections[indexPath.section].items[indexPath.row];
-    return item.viewSize;
+    if (self.sections[indexPath.section].isCollapsed) return CGSizeZero;
+    
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
+    if (item.viewSizeBlock) {
+        return item.viewSizeBlock(collectionView.bounds.size);
+    }
+    return CGSizeZero;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -146,12 +163,18 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     id<QWListItem> item = self.sections[section].header;
-    return item.viewSize;
+    if (item.viewSizeBlock) {
+        return item.viewSizeBlock(collectionView.bounds.size);
+    }
+    return CGSizeZero;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     id<QWListItem> item = self.sections[section].footer;
-    return item.viewSize;
+    if (item.viewSizeBlock) {
+        return item.viewSizeBlock(collectionView.bounds.size);
+    }
+    return CGSizeZero;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -162,7 +185,9 @@
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
-    id item = self.sections[indexPath.section].items[indexPath.row];
+    if (self.sections[indexPath.section].isCollapsed) return false;
+    
+    id<QWListItem> item = [self _itemsForSection:indexPath.section][indexPath.row];
     if (self.canMoveItemBlock) {
         return self.canMoveItemBlock(collectionView, indexPath, item);
     }
@@ -176,6 +201,8 @@
         self.moveItemBlock(collectionView, sourceIndexPath, sourceItem, destinationIndexPath, destinationItem);
     }
 }
+
+#pragma mark Scroll view delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.scrollViewDidScrollBlock) {
@@ -205,6 +232,16 @@
     if (self.scrollViewDidScrollToTopBlock) {
         self.scrollViewDidScrollToTopBlock(scrollView);
     }
+}
+
+#pragma mark - private API
+
+- (NSMutableArray<id<QWListItem>> *)_itemsForSection:(NSInteger)section {
+    QWListSection *sectionModel = self.sections[section];
+    if (self.sectionItemsFilterBlock) {
+        return self.sectionItemsFilterBlock(sectionModel);
+    }
+    return sectionModel.items;
 }
 
 @end

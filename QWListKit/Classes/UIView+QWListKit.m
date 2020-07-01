@@ -141,8 +141,28 @@
     return nil;
 }
 
+- (void)setQw_indexPath:(NSIndexPath *)qw_indexPath {
+    objc_setAssociatedObject(self, @selector(qw_indexPath), qw_indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (NSIndexPath *)qw_indexPath {
-    return [[self qw_tableView] indexPathForCell:self];
+    return objc_getAssociatedObject(self, @selector(qw_indexPath));
+}
+
+- (void)setQw_isFirst:(BOOL)qw_isFirst {
+    objc_setAssociatedObject(self, @selector(qw_isFirst), @(qw_isFirst), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)qw_isFirst {
+    return [objc_getAssociatedObject(self, @selector(qw_isFirst)) boolValue];
+}
+
+- (void)setQw_isLast:(BOOL)qw_isLast {
+    objc_setAssociatedObject(self, @selector(qw_isLast), @(qw_isLast), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)qw_isLast {
+    return [objc_getAssociatedObject(self, @selector(qw_isLast)) boolValue];
 }
 
 @end
@@ -160,8 +180,28 @@
     return nil;
 }
 
+- (void)setQw_indexPath:(NSIndexPath *)qw_indexPath {
+    objc_setAssociatedObject(self, @selector(qw_indexPath), qw_indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (NSIndexPath *)qw_indexPath {
-    return [[self qw_collectionView] indexPathForCell:self];
+    return objc_getAssociatedObject(self, @selector(qw_indexPath));
+}
+
+- (void)setQw_isFirst:(BOOL)qw_isFirst {
+    objc_setAssociatedObject(self, @selector(qw_isFirst), @(qw_isFirst), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)qw_isFirst {
+    return [objc_getAssociatedObject(self, @selector(qw_isFirst)) boolValue];
+}
+
+- (void)setQw_isLast:(BOOL)qw_isLast {
+    objc_setAssociatedObject(self, @selector(qw_isLast), @(qw_isLast), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)qw_isLast {
+    return [objc_getAssociatedObject(self, @selector(qw_isLast)) boolValue];
 }
 
 @end

@@ -52,8 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableViewCell (QWListKit)
 
-- (UITableView *)qw_tableView;
-- (NSIndexPath *)qw_indexPath;
+@property (nonatomic, strong, nullable) NSIndexPath *qw_indexPath;
+@property (nonatomic) BOOL qw_isFirst;
+@property (nonatomic) BOOL qw_isLast;
+
+- (nullable UITableView *)qw_tableView;
 
 @end
 
@@ -61,8 +64,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UICollectionViewCell (QWListKit)
 
-- (UICollectionView *)qw_collectionView;
-- (NSIndexPath *)qw_indexPath;
+@property (nonatomic, strong, nullable) NSIndexPath *qw_indexPath;
+@property (nonatomic) BOOL qw_isFirst;
+@property (nonatomic) BOOL qw_isLast;
+
+- (nullable UICollectionView *)qw_collectionView;
 
 @end
 

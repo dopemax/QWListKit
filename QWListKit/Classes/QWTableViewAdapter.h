@@ -27,8 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QWTableViewAdapter : NSObject <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray<NSString *> *sectionIndexTitles;
-
 - (instancetype)initWithTableView:(UITableView *)tableView NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;
@@ -36,6 +34,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak, readonly) __kindof UITableView *tableView;
 @property (nonatomic, weak) id<QWTableViewAdapterDataSource> dataSource;
+
+@property (nonatomic, strong) NSArray<NSString *> *sectionIndexTitles;
+
+@property (nonatomic, copy) NSMutableArray<id<QWListItem>> * (^sectionItemsFilterBlock)(QWListSection *sectionModel);
 
 @property (nonatomic, copy) void (^willDisplayCellBlock)(__kindof UITableView *tableView, __kindof UITableViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
 @property (nonatomic, copy) void (^willDisplayHeaderViewBlock)(__kindof UITableView *tableView, __kindof UIView *headerView, NSInteger section, id<QWListItem> item);

@@ -57,8 +57,10 @@ extension FeedItem: QWListItem {
         return "\(viewClass())"
     }
     
-    func viewSize() -> CGSize {
-        return cachedSize
+    func viewSizeBlock() -> (CGSize) -> CGSize {
+        return { (listViewSize) in
+            return .init(width: listViewSize.width, height: self.cachedSize.height)
+        }
     }
     
 }
