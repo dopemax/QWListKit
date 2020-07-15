@@ -1,5 +1,5 @@
 PODS:
-  - QWListKit (0.1.0)
+  - QWListKit (1.2.0)
 
 DEPENDENCIES:
   - QWListKit (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  QWListKit: f54c04a7be798cb74b07b5462ffbe668349b950e
+  QWListKit: f441b162ffb24014aec8d8b49d01bd36d90bf5f0
 
 PODFILE CHECKSUM: eea4fd5cb268c35122660216111d7abf8ab2824f
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

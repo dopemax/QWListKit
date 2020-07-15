@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class FeedItem {
+struct Feed {
     
     enum ItemType {
         case type1
@@ -18,34 +18,39 @@ final class FeedItem {
     let type: ItemType
     
     let title: String
-        
-    init(type: ItemType, title: String) {
-        self.type = type
-        self.title = title
+    
+}
+
+class FeedItem: QWListItem {
+    
+    let model: Feed
+    
+    init(model: Feed) {
+        self.model = model
+        super.init()
         
         layout()
     }
+    
+    var height: CGFloat = 0.0
+    
+    var isExpanded: Bool = false
     
     func layout() {
         
         let width = UIScreen.main.bounds.width
         
         if self.viewClass() == LabelCell.self {
-            cachedSize = isExpanded ? CGSize(width: width, height: LabelCell.textHeight(title, width: width)) : CGSize(width: width, height: LabelCell.singleLineHeight)
+            height = isExpanded ? LabelCell.textHeight(model.title, width: width) : LabelCell.singleLineHeight
         } else if self.viewClass() == ImageCell.self {
-            cachedSize = CGSize(width: width, height: 90)
+            height = 90.0
         }
     }
     
-    var cachedSize: CGSize = .zero
     
-    var isExpanded: Bool = false
-}
-
-extension FeedItem: QWListItem {
     
-    func viewClass() -> QWListBindable.Type {
-        switch type {
+    override func viewClass() -> QWListBindable.Type {
+        switch model.type {
         case .type1:
             return LabelCell.self
         case .type2:
@@ -53,13 +58,13 @@ extension FeedItem: QWListItem {
         }
     }
     
-    func viewReuseIdentifier() -> String {
+    override func viewReuseIdentifier() -> String {
         return "\(viewClass())"
     }
     
-    func viewSizeBlock() -> (CGSize) -> CGSize {
-        return { (listViewSize) in
-            return .init(width: listViewSize.width, height: self.cachedSize.height)
+    override func viewSizeBlock() -> (UIScrollView, UIEdgeInsets) -> CGSize {
+        return { (listView, sectionInset) in
+            return .init(width: listView.bounds.width, height: self.height)
         }
     }
     

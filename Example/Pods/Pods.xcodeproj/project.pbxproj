@@ -7,25 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13491AFD9B85806D2EBDD61C7EC6B647 /* QWListKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6A371638A9810F69A6A4ADDE851E46C /* QWListKit-dummy.m */; };
-		34EC284EB935F16F8A1AAF4DCB19A05E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		35CFF5A84E913A5C42823C516B796766 /* UIView+QWListKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 1478C7875F1A5F162C14F2DD3799F86C /* UIView+QWListKit.m */; };
-		369379BC0DC5C21BCF23199A7C7D60B5 /* QWListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 81F1054AD9BAF8263B6B1B922D486BA1 /* QWListItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3ED2DC4DFEE4739CEECE21AE2F019154 /* UIView+QWListKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1031187B6B6EF0D84CB3F979542EA294 /* UIView+QWListKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5475F805C95D99211F0C908C7E38A48E /* QWListSection.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AEF0D37B0F4545E0B82AE15038D17EE /* QWListSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		54866B15A2B76C38898370086FE20064 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		6378DDAE634351F6DB5D9A36810EFF60 /* QWListKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4435E2DEBF0F396785993AC3E105EC6F /* QWListKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		657303E0E22E7F282B9D270892AD2A48 /* QWListSection.h in Headers */ = {isa = PBXBuildFile; fileRef = D8DBC85555D266348F349605555251B4 /* QWListSection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		576F3B3BE1187DEEFAF5330B58B72833 /* UIView+QWListKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 9482EC3192D7D8FF3B0CD0E80293CA65 /* UIView+QWListKit.m */; };
+		59F30A63ED020956FE3C95291DABE70C /* QWTableViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7CC8BD0ADDB4D5A8B1C0B5791FDC62 /* QWTableViewAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A1A7C77091928967CD934EB932FEAE6 /* QWListItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A29B57E64CCCC5C3A518F86042484F2B /* QWListItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60580858F4738D89F8923C313396973D /* QWListKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B5A2DE0382F9F3BD264E8233CBA2612 /* QWListKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68705550E7511715E849BC8733F518B2 /* Pods-QWListKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 31BCF4A0889B3382353995AE054C34FB /* Pods-QWListKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69D4FDCA2E445DE9AA950CA40C63FA55 /* Pods-QWListKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBD20BE1380AA05DC607B1B953CAD33 /* Pods-QWListKit_Example-dummy.m */; };
-		6C1EDE0BCA2D935402F17BF6FE74DE45 /* QWCollectionViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = E8C341CF1A82805988995FDC0068BFCD /* QWCollectionViewAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C521F845801A4F754B2A638BFD3E6F2 /* Pods-QWListKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C23F5814659210F18252FE420A980CA8 /* Pods-QWListKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		812427AA7376287125E6366BE1CC04C9 /* QWTableViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = A85CF3D886E7F8B2786AB86E13A42593 /* QWTableViewAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9BC24D453920781D0EB336243E65E087 /* QWListKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A363DD762659BEBEF372384C92EE8EDA /* QWListKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		735EBD62297B5D1EE6AFDFB8FC8FBE95 /* QWListKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FF74CBE2CABC64783993E2885A9A5D2E /* QWListKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8321C9D621854DC7D812C3B3027D23BD /* QWListKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F571AD62993EC310F095898DBEC1B8 /* QWListKit-dummy.m */; };
+		9BBBAA2C703D120F102C440B121DB431 /* QWCollectionViewAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = A45FDBF70322F24E519C3873755F36BD /* QWCollectionViewAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9135C94FE2B94D8038D9F8889D4199A /* Pods-QWListKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C0FB3721BADBB8F227EA0C5F0337E1 /* Pods-QWListKit_Tests-dummy.m */; };
-		C7867E4684A2F1D815F3FCA3278EADF6 /* QWListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = B900511D260806138E43EC0D965F8222 /* QWListSection.m */; };
-		DE127C70C77BA395C0A4BE5DB2607036 /* QWCollectionViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE41FCF9C3A8B18308DD8C2B213C965 /* QWCollectionViewAdapter.m */; };
+		AC355C3A10247F13B4E40C726C6235CC /* QWCollectionViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1528BBE4CBA6F95F6F6A619F07ED2802 /* QWCollectionViewAdapter.m */; };
+		BAC5167E917C81232DB9E6D023D7D347 /* UIView+QWListKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 089AFF74CBB98A2244C60946AA5A9AC4 /* UIView+QWListKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C00DAABBC94B4469D02B523154626C75 /* QWListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E4540C0F3F5C546A01CBF86162B1C5 /* QWListItem.m */; };
+		CC1216407447B404633479167D44A32A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		DA4B95353688E809457641D97284BC5D /* QWListItemInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 73BCAE77C25F7A54F969E906A6005019 /* QWListItemInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		EBD9F920F7D6EEDEEF2EC3F5ADD71AAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		FB01DE09B818DEBA51A979A9D5D996D2 /* QWTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A1BB1B6B54834BBEBE3489B2EFF2A9 /* QWTableViewAdapter.m */; };
+		F49D0AD22E7FB2EB28B5F797BE845B68 /* QWTableViewAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA7C7E17DA146D603E4424D33CDA9D4 /* QWTableViewAdapter.m */; };
+		FA54D3E5EA83107521085C0174C671F1 /* QWListSection.m in Sources */ = {isa = PBXBuildFile; fileRef = F811FE9A9AED520E447CDB28C55DC117 /* QWListSection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,47 +48,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09ABD1B38DCB35718671A0B45325E33D /* Pods_QWListKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QWListKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		06444813E1D13A262D86277AB652E16F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		089AFF74CBB98A2244C60946AA5A9AC4 /* UIView+QWListKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+QWListKit.h"; path = "QWListKit/Classes/UIView+QWListKit.h"; sourceTree = "<group>"; };
+		09ABD1B38DCB35718671A0B45325E33D /* Pods_QWListKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QWListKit_Tests.framework; path = "Pods-QWListKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FA06087CC6B4AFB10420D2200C3BDFD /* Pods-QWListKit_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QWListKit_Example-Info.plist"; sourceTree = "<group>"; };
-		1031187B6B6EF0D84CB3F979542EA294 /* UIView+QWListKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+QWListKit.h"; path = "QWListKit/Classes/UIView+QWListKit.h"; sourceTree = "<group>"; };
-		1478C7875F1A5F162C14F2DD3799F86C /* UIView+QWListKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+QWListKit.m"; path = "QWListKit/Classes/UIView+QWListKit.m"; sourceTree = "<group>"; };
-		177D232972F6809487F1AE2AD57B3ED7 /* QWListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QWListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1ACA7BD7B7E89FD1976D17F6D44060C5 /* QWListKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = QWListKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		1C9FE2398ABEC37CEAD2598907573768 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		1528BBE4CBA6F95F6F6A619F07ED2802 /* QWCollectionViewAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWCollectionViewAdapter.m; path = QWListKit/Classes/QWCollectionViewAdapter.m; sourceTree = "<group>"; };
+		177D232972F6809487F1AE2AD57B3ED7 /* QWListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = QWListKit.framework; path = QWListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA7C7E17DA146D603E4424D33CDA9D4 /* QWTableViewAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWTableViewAdapter.m; path = QWListKit/Classes/QWTableViewAdapter.m; sourceTree = "<group>"; };
 		225A3428DB1DDD0B62AF83001A9C50E3 /* Pods-QWListKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QWListKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		26E4540C0F3F5C546A01CBF86162B1C5 /* QWListItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWListItem.m; path = QWListKit/Classes/QWListItem.m; sourceTree = "<group>"; };
 		31BCF4A0889B3382353995AE054C34FB /* Pods-QWListKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QWListKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		381152E25D732D18C987EA7498AAB7F1 /* Pods-QWListKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QWListKit_Example.modulemap"; sourceTree = "<group>"; };
-		3BE41FCF9C3A8B18308DD8C2B213C965 /* QWCollectionViewAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWCollectionViewAdapter.m; path = QWListKit/Classes/QWCollectionViewAdapter.m; sourceTree = "<group>"; };
 		400826EE05EC184DDA0D57653A9988D6 /* Pods-QWListKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-QWListKit_Example-frameworks.sh"; sourceTree = "<group>"; };
-		4435E2DEBF0F396785993AC3E105EC6F /* QWListKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListKit.h; path = QWListKit/Classes/QWListKit.h; sourceTree = "<group>"; };
-		46B727744B443B177BA067454F6009B5 /* QWListKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "QWListKit-Info.plist"; sourceTree = "<group>"; };
-		5D667CA36E099DD8FB041EB6CB4B674E /* Pods_QWListKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QWListKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50AE977DBC6565AC79D3DC6895C641AB /* QWListKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QWListKit.debug.xcconfig; sourceTree = "<group>"; };
+		53992EC3691EA6DB4DD81BC56DD80D25 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		59ADCAAF18436EB5F7BFE01B9771910A /* QWListKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QWListKit-prefix.pch"; sourceTree = "<group>"; };
+		5D667CA36E099DD8FB041EB6CB4B674E /* Pods_QWListKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_QWListKit_Example.framework; path = "Pods-QWListKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6446B4BB7EECD58433495D4F941D3857 /* Pods-QWListKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QWListKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		81F1054AD9BAF8263B6B1B922D486BA1 /* QWListItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListItem.h; path = QWListKit/Classes/QWListItem.h; sourceTree = "<group>"; };
+		6E13B154958564C9012A5F05FD879ACF /* QWListKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QWListKit.modulemap; sourceTree = "<group>"; };
+		73BCAE77C25F7A54F969E906A6005019 /* QWListItemInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = QWListItemInternal.h; sourceTree = "<group>"; };
+		7B5A2DE0382F9F3BD264E8233CBA2612 /* QWListKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListKit.h; path = QWListKit/Classes/QWListKit.h; sourceTree = "<group>"; };
+		84D2A7E6021CF860FE927DDF793B64F9 /* QWListKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "QWListKit-Info.plist"; sourceTree = "<group>"; };
 		8BB8E6C1E0B00EDB616787B4E2E8A83D /* Pods-QWListKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QWListKit_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9482EC3192D7D8FF3B0CD0E80293CA65 /* UIView+QWListKit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+QWListKit.m"; path = "QWListKit/Classes/UIView+QWListKit.m"; sourceTree = "<group>"; };
 		955021D703FB7C7284EF57849856BE7B /* Pods-QWListKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QWListKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		96A7F3E89D94F23F58A43B2E04506A6F /* Pods-QWListKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QWListKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A363DD762659BEBEF372384C92EE8EDA /* QWListKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QWListKit-umbrella.h"; sourceTree = "<group>"; };
+		9AEF0D37B0F4545E0B82AE15038D17EE /* QWListSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListSection.h; path = QWListKit/Classes/QWListSection.h; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A29B57E64CCCC5C3A518F86042484F2B /* QWListItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListItem.h; path = QWListKit/Classes/QWListItem.h; sourceTree = "<group>"; };
+		A45FDBF70322F24E519C3873755F36BD /* QWCollectionViewAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWCollectionViewAdapter.h; path = QWListKit/Classes/QWCollectionViewAdapter.h; sourceTree = "<group>"; };
 		A5C0FB3721BADBB8F227EA0C5F0337E1 /* Pods-QWListKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QWListKit_Tests-dummy.m"; sourceTree = "<group>"; };
-		A85CF3D886E7F8B2786AB86E13A42593 /* QWTableViewAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWTableViewAdapter.h; path = QWListKit/Classes/QWTableViewAdapter.h; sourceTree = "<group>"; };
-		B63AA8721841AAB8E4953AECF41FA1BE /* QWListKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = QWListKit.modulemap; sourceTree = "<group>"; };
-		B643EAF821EB01F089C31AD4B30EDA9B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		B900511D260806138E43EC0D965F8222 /* QWListSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWListSection.m; path = QWListKit/Classes/QWListSection.m; sourceTree = "<group>"; };
-		BA48E38D0A1993B8FE2DD1E9C16F16E4 /* QWListKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QWListKit-prefix.pch"; sourceTree = "<group>"; };
+		A866DB1C5A2AA9CB0F14EE983CC8F827 /* QWListKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = QWListKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BC2AB21881361F49D14CCB29C4AE30B9 /* Pods-QWListKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QWListKit_Tests.modulemap"; sourceTree = "<group>"; };
+		BD7CC8BD0ADDB4D5A8B1C0B5791FDC62 /* QWTableViewAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWTableViewAdapter.h; path = QWListKit/Classes/QWTableViewAdapter.h; sourceTree = "<group>"; };
 		BFBD20BE1380AA05DC607B1B953CAD33 /* Pods-QWListKit_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QWListKit_Example-dummy.m"; sourceTree = "<group>"; };
 		C23F5814659210F18252FE420A980CA8 /* Pods-QWListKit_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QWListKit_Tests-umbrella.h"; sourceTree = "<group>"; };
 		C307C6111BC6C64453E6ADB9A05FFA2A /* Pods-QWListKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QWListKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C314AAE437913753E032E35662901978 /* Pods-QWListKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QWListKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		C9850019E1040F464E48E76D7949301C /* QWListKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QWListKit.xcconfig; sourceTree = "<group>"; };
-		D6A371638A9810F69A6A4ADDE851E46C /* QWListKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QWListKit-dummy.m"; sourceTree = "<group>"; };
-		D8DBC85555D266348F349605555251B4 /* QWListSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWListSection.h; path = QWListKit/Classes/QWListSection.h; sourceTree = "<group>"; };
-		E2A1BB1B6B54834BBEBE3489B2EFF2A9 /* QWTableViewAdapter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWTableViewAdapter.m; path = QWListKit/Classes/QWTableViewAdapter.m; sourceTree = "<group>"; };
-		E8C341CF1A82805988995FDC0068BFCD /* QWCollectionViewAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QWCollectionViewAdapter.h; path = QWListKit/Classes/QWCollectionViewAdapter.h; sourceTree = "<group>"; };
+		C6BEBB1E4811A04DE905694FC59384D7 /* QWListKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = QWListKit.release.xcconfig; sourceTree = "<group>"; };
+		D1F571AD62993EC310F095898DBEC1B8 /* QWListKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "QWListKit-dummy.m"; sourceTree = "<group>"; };
 		F4EAAC890DFA8C52C52A3699E3F698D2 /* Pods-QWListKit_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-QWListKit_Tests-Info.plist"; sourceTree = "<group>"; };
+		F811FE9A9AED520E447CDB28C55DC117 /* QWListSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QWListSection.m; path = QWListKit/Classes/QWListSection.m; sourceTree = "<group>"; };
 		FF0E3EC4671C5C9D113DEF720667A9D3 /* Pods-QWListKit_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-QWListKit_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FF74CBE2CABC64783993E2885A9A5D2E /* QWListKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QWListKit-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,17 +111,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5CF140A4F4A4552836B9E1647108F5DA /* Frameworks */ = {
+		7D3D1419D9694B7CA8E607025E2CF25A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34EC284EB935F16F8A1AAF4DCB19A05E /* Foundation.framework in Frameworks */,
+				CC1216407447B404633479167D44A32A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0795B07BE3A93161D1F1A4DB0B8C2114 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E6D9064063A9459D467A6AA439275A1 /* QWListKit */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		246784929C69601F09A0712CE77D04B8 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,36 +139,51 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		42F1FD19FFAE4403B06F477E86BD7494 /* Development Pods */ = {
+		2E78F50E5290003BDF31BC12B33DBB2A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				D31D6C0B0591D50EE934DB3A866E4537 /* QWListKit */,
+				53992EC3691EA6DB4DD81BC56DD80D25 /* LICENSE */,
+				A866DB1C5A2AA9CB0F14EE983CC8F827 /* QWListKit.podspec */,
+				06444813E1D13A262D86277AB652E16F /* README.md */,
 			);
-			name = "Development Pods";
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		760FB978647A0E0382F4EEC6740080A6 /* Support Files */ = {
+		7E6D9064063A9459D467A6AA439275A1 /* QWListKit */ = {
 			isa = PBXGroup;
 			children = (
-				B63AA8721841AAB8E4953AECF41FA1BE /* QWListKit.modulemap */,
-				C9850019E1040F464E48E76D7949301C /* QWListKit.xcconfig */,
-				D6A371638A9810F69A6A4ADDE851E46C /* QWListKit-dummy.m */,
-				46B727744B443B177BA067454F6009B5 /* QWListKit-Info.plist */,
-				BA48E38D0A1993B8FE2DD1E9C16F16E4 /* QWListKit-prefix.pch */,
-				A363DD762659BEBEF372384C92EE8EDA /* QWListKit-umbrella.h */,
+				A45FDBF70322F24E519C3873755F36BD /* QWCollectionViewAdapter.h */,
+				1528BBE4CBA6F95F6F6A619F07ED2802 /* QWCollectionViewAdapter.m */,
+				A29B57E64CCCC5C3A518F86042484F2B /* QWListItem.h */,
+				26E4540C0F3F5C546A01CBF86162B1C5 /* QWListItem.m */,
+				7B5A2DE0382F9F3BD264E8233CBA2612 /* QWListKit.h */,
+				9AEF0D37B0F4545E0B82AE15038D17EE /* QWListSection.h */,
+				F811FE9A9AED520E447CDB28C55DC117 /* QWListSection.m */,
+				BD7CC8BD0ADDB4D5A8B1C0B5791FDC62 /* QWTableViewAdapter.h */,
+				1EA7C7E17DA146D603E4424D33CDA9D4 /* QWTableViewAdapter.m */,
+				089AFF74CBB98A2244C60946AA5A9AC4 /* UIView+QWListKit.h */,
+				9482EC3192D7D8FF3B0CD0E80293CA65 /* UIView+QWListKit.m */,
+				EE3D16921F7ED032AA73E79C1C9FF03D /* Internal */,
+				2E78F50E5290003BDF31BC12B33DBB2A /* Pod */,
+				8C2D13379A51BFDAB0CE7C4EF94B71B7 /* Support Files */,
+			);
+			name = QWListKit;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		8C2D13379A51BFDAB0CE7C4EF94B71B7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6E13B154958564C9012A5F05FD879ACF /* QWListKit.modulemap */,
+				D1F571AD62993EC310F095898DBEC1B8 /* QWListKit-dummy.m */,
+				84D2A7E6021CF860FE927DDF793B64F9 /* QWListKit-Info.plist */,
+				59ADCAAF18436EB5F7BFE01B9771910A /* QWListKit-prefix.pch */,
+				FF74CBE2CABC64783993E2885A9A5D2E /* QWListKit-umbrella.h */,
+				50AE977DBC6565AC79D3DC6895C641AB /* QWListKit.debug.xcconfig */,
+				C6BEBB1E4811A04DE905694FC59384D7 /* QWListKit.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/QWListKit";
-			sourceTree = "<group>";
-		};
-		786DBC6F9462B0D4B5F66C40AD4476F0 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				1C9FE2398ABEC37CEAD2598907573768 /* LICENSE */,
-				1ACA7BD7B7E89FD1976D17F6D44060C5 /* QWListKit.podspec */,
-				B643EAF821EB01F089C31AD4B30EDA9B /* README.md */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		A9CA8D3D43EFB20C3F78F599E0C49EF5 /* Pods-QWListKit_Tests */ = {
@@ -196,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				42F1FD19FFAE4403B06F477E86BD7494 /* Development Pods */,
+				0795B07BE3A93161D1F1A4DB0B8C2114 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				BB2A75D7E18002AFC4C2B698BCE5DB2B /* Products */,
 				246784929C69601F09A0712CE77D04B8 /* Targets Support Files */,
@@ -209,26 +237,6 @@
 				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D31D6C0B0591D50EE934DB3A866E4537 /* QWListKit */ = {
-			isa = PBXGroup;
-			children = (
-				4435E2DEBF0F396785993AC3E105EC6F /* QWListKit.h */,
-				81F1054AD9BAF8263B6B1B922D486BA1 /* QWListItem.h */,
-				D8DBC85555D266348F349605555251B4 /* QWListSection.h */,
-				B900511D260806138E43EC0D965F8222 /* QWListSection.m */,
-				A85CF3D886E7F8B2786AB86E13A42593 /* QWTableViewAdapter.h */,
-				E2A1BB1B6B54834BBEBE3489B2EFF2A9 /* QWTableViewAdapter.m */,
-				E8C341CF1A82805988995FDC0068BFCD /* QWCollectionViewAdapter.h */,
-				3BE41FCF9C3A8B18308DD8C2B213C965 /* QWCollectionViewAdapter.m */,
-				1031187B6B6EF0D84CB3F979542EA294 /* UIView+QWListKit.h */,
-				1478C7875F1A5F162C14F2DD3799F86C /* UIView+QWListKit.m */,
-				786DBC6F9462B0D4B5F66C40AD4476F0 /* Pod */,
-				760FB978647A0E0382F4EEC6740080A6 /* Support Files */,
-			);
-			name = QWListKit;
-			path = ../..;
 			sourceTree = "<group>";
 		};
 		D7D3DDBC7728AE6B54BA33939CFAF61C /* Pods-QWListKit_Example */ = {
@@ -248,28 +256,38 @@
 			path = "Target Support Files/Pods-QWListKit_Example";
 			sourceTree = "<group>";
 		};
+		EE3D16921F7ED032AA73E79C1C9FF03D /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				73BCAE77C25F7A54F969E906A6005019 /* QWListItemInternal.h */,
+			);
+			name = Internal;
+			path = QWListKit/Classes/Internal;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		6FE85815581C5FDEFD204DB85727FEEE /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6C1EDE0BCA2D935402F17BF6FE74DE45 /* QWCollectionViewAdapter.h in Headers */,
-				369379BC0DC5C21BCF23199A7C7D60B5 /* QWListItem.h in Headers */,
-				9BC24D453920781D0EB336243E65E087 /* QWListKit-umbrella.h in Headers */,
-				6378DDAE634351F6DB5D9A36810EFF60 /* QWListKit.h in Headers */,
-				657303E0E22E7F282B9D270892AD2A48 /* QWListSection.h in Headers */,
-				812427AA7376287125E6366BE1CC04C9 /* QWTableViewAdapter.h in Headers */,
-				3ED2DC4DFEE4739CEECE21AE2F019154 /* UIView+QWListKit.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		72F9B7BDD85C116E222328512EF23B53 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6C521F845801A4F754B2A638BFD3E6F2 /* Pods-QWListKit_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB8E20CBB6DA04B2E01ED2F9560A1AD3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBBAA2C703D120F102C440B121DB431 /* QWCollectionViewAdapter.h in Headers */,
+				5A1A7C77091928967CD934EB932FEAE6 /* QWListItem.h in Headers */,
+				DA4B95353688E809457641D97284BC5D /* QWListItemInternal.h in Headers */,
+				735EBD62297B5D1EE6AFDFB8FC8FBE95 /* QWListKit-umbrella.h in Headers */,
+				60580858F4738D89F8923C313396973D /* QWListKit.h in Headers */,
+				5475F805C95D99211F0C908C7E38A48E /* QWListSection.h in Headers */,
+				59F30A63ED020956FE3C95291DABE70C /* QWTableViewAdapter.h in Headers */,
+				BAC5167E917C81232DB9E6D023D7D347 /* UIView+QWListKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +304,12 @@
 /* Begin PBXNativeTarget section */
 		29901600309BD680BB2B3880A59E95C3 /* QWListKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F3AEBDA9E59230F6F0F94967C028026F /* Build configuration list for PBXNativeTarget "QWListKit" */;
+			buildConfigurationList = 9C9FB55CA37B940098EED879C269D9B6 /* Build configuration list for PBXNativeTarget "QWListKit" */;
 			buildPhases = (
-				6FE85815581C5FDEFD204DB85727FEEE /* Headers */,
-				96C83EA8225D1BFB1D4CA5FCEF8B8F95 /* Sources */,
-				5CF140A4F4A4552836B9E1647108F5DA /* Frameworks */,
-				399402BE913617C853F52B873031AE00 /* Resources */,
+				CB8E20CBB6DA04B2E01ED2F9560A1AD3 /* Headers */,
+				329913FFCDA7E669B01D7962311C5C14 /* Sources */,
+				7D3D1419D9694B7CA8E607025E2CF25A /* Frameworks */,
+				21AA8DC5668056253E09E223817B4D8B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -355,6 +373,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = BB2A75D7E18002AFC4C2B698BCE5DB2B /* Products */;
@@ -369,7 +388,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		399402BE913617C853F52B873031AE00 /* Resources */ = {
+		21AA8DC5668056253E09E223817B4D8B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -401,23 +420,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		329913FFCDA7E669B01D7962311C5C14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC355C3A10247F13B4E40C726C6235CC /* QWCollectionViewAdapter.m in Sources */,
+				C00DAABBC94B4469D02B523154626C75 /* QWListItem.m in Sources */,
+				8321C9D621854DC7D812C3B3027D23BD /* QWListKit-dummy.m in Sources */,
+				FA54D3E5EA83107521085C0174C671F1 /* QWListSection.m in Sources */,
+				F49D0AD22E7FB2EB28B5F797BE845B68 /* QWTableViewAdapter.m in Sources */,
+				576F3B3BE1187DEEFAF5330B58B72833 /* UIView+QWListKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86FB00AC2C1C55A39A9E96ED7DB342B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				69D4FDCA2E445DE9AA950CA40C63FA55 /* Pods-QWListKit_Example-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		96C83EA8225D1BFB1D4CA5FCEF8B8F95 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DE127C70C77BA395C0A4BE5DB2607036 /* QWCollectionViewAdapter.m in Sources */,
-				13491AFD9B85806D2EBDD61C7EC6B647 /* QWListKit-dummy.m in Sources */,
-				C7867E4684A2F1D815F3FCA3278EADF6 /* QWListSection.m in Sources */,
-				FB01DE09B818DEBA51A979A9D5D996D2 /* QWTableViewAdapter.m in Sources */,
-				35CFF5A84E913A5C42823C516B796766 /* UIView+QWListKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,40 +492,9 @@
 			};
 			name = Debug;
 		};
-		47CB4DDCC10ABA3B756FB43DC4DFA639 /* Debug */ = {
+		33013B3062C31921DC5CB0EA88087B9F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9850019E1040F464E48E76D7949301C /* QWListKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/QWListKit/QWListKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/QWListKit/QWListKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/QWListKit/QWListKit.modulemap";
-				PRODUCT_MODULE_NAME = QWListKit;
-				PRODUCT_NAME = QWListKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		513C5305982254E8F825BACE18FC39F7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9850019E1040F464E48E76D7949301C /* QWListKit.xcconfig */;
+			baseConfigurationReference = C6BEBB1E4811A04DE905694FC59384D7 /* QWListKit.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -534,6 +523,37 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		66079FA88BB937E1154AB63A888CBCFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50AE977DBC6565AC79D3DC6895C641AB /* QWListKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/QWListKit/QWListKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/QWListKit/QWListKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/QWListKit/QWListKit.modulemap";
+				PRODUCT_MODULE_NAME = QWListKit;
+				PRODUCT_NAME = QWListKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		728BB5538057C8557F6786C1ED748C9D /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -622,7 +642,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -771,6 +792,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		9C9FB55CA37B940098EED879C269D9B6 /* Build configuration list for PBXNativeTarget "QWListKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66079FA88BB937E1154AB63A888CBCFB /* Debug */,
+				33013B3062C31921DC5CB0EA88087B9F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CF42B338CF2DF1FEFEC746A6FDAC6038 /* Build configuration list for PBXNativeTarget "Pods-QWListKit_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -785,15 +815,6 @@
 			buildConfigurations = (
 				D1CFA4D2610032090ED3802E00A1703F /* Debug */,
 				93E4FE4068468DB2122A19A468BD9713 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F3AEBDA9E59230F6F0F94967C028026F /* Build configuration list for PBXNativeTarget "QWListKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				47CB4DDCC10ABA3B756FB43DC4DFA639 /* Debug */,
-				513C5305982254E8F825BACE18FC39F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

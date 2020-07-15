@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "QWListItem.h"
-#import "QWListSection.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class QWCollectionViewAdapter;
+@class QWCollectionViewAdapter, QWListItem, QWListSection;
 
 @protocol QWCollectionViewAdapterDataSource <NSObject>
 
@@ -32,16 +30,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
 
-@property (nonatomic, weak, readonly) __kindof UICollectionView *collectionView;
+@property (nonatomic, unsafe_unretained, readonly) __kindof UICollectionView *collectionView;
 @property (nonatomic, weak) id<QWCollectionViewAdapterDataSource> dataSource;
 
-@property (nonatomic, copy) NSMutableArray<id<QWListItem>> * (^sectionItemsFilterBlock)(QWListSection *sectionModel);
+@property (nonatomic, copy) NSMutableArray<QWListItem *> * (^sectionItemsFilterBlock)(QWListSection *sectionModel);
 
-@property (nonatomic, copy) void (^willDisplayCellBlock)(__kindof UICollectionView *collectionView, __kindof UICollectionViewCell *cell, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) void (^willDisplaySupplementaryViewBlock)(__kindof UICollectionView *collectionView, __kindof UICollectionReusableView *view, NSString *elementKind, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) void (^didSelectRowBlock)(__kindof UICollectionView *collectionView, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) BOOL (^canMoveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *indexPath, id<QWListItem> item);
-@property (nonatomic, copy) void (^moveItemBlock)(__kindof UICollectionView *collectionView, NSIndexPath *sourceIndexPath, id<QWListItem> sourceItem, NSIndexPath *destinationIndexPath, id<QWListItem> destinationItem);
+@property (nonatomic, copy) void (^willDisplayCellBlock)(QWCollectionViewAdapter *adapter, __kindof UICollectionViewCell *cell, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy) void (^willDisplaySupplementaryViewBlock)(QWCollectionViewAdapter *adapter, __kindof UICollectionReusableView *view, NSString *elementKind, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy) void (^didSelectItemBlock)(QWCollectionViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy) BOOL (^canMoveItemBlock)(QWCollectionViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy) void (^moveItemBlock)(QWCollectionViewAdapter *adapter, QWListSection *sectionSectionModel, QWListItem *sourceItem, QWListSection *destinationSectionModel, QWListItem *destinationItem);
 
 @property (nonatomic, copy) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
 @property (nonatomic, copy) void (^scrollViewWillBeginDraggingBlock)(UIScrollView *scrollView);

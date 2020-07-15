@@ -1,6 +1,6 @@
 {
   "name": "QWListKit",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "summary": "QWListKit.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/guawaji/QWListKit",
@@ -13,10 +13,15 @@
   },
   "source": {
     "git": "https://github.com/guawaji/QWListKit.git",
-    "tag": "0.1.0"
+    "tag": "1.2.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "QWListKit/Classes/**/*"
+  "source_files": [
+    "QWListKit/Classes/**/*"
+  ],
+  "private_header_files": [
+    "QWListKit/Classes/Internal/*.h"
+  ]
 }

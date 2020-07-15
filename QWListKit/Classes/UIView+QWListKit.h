@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "QWTableViewAdapter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -45,30 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)qw_listIsEmpty;
 - (NSUInteger)qw_listItemsCount;
-
-@end
-
-
-
-@interface UITableViewCell (QWListKit)
-
-@property (nonatomic, strong, nullable) NSIndexPath *qw_indexPath;
-@property (nonatomic) BOOL qw_isFirst;
-@property (nonatomic) BOOL qw_isLast;
-
-- (nullable UITableView *)qw_tableView;
-
-@end
-
-
-
-@interface UICollectionViewCell (QWListKit)
-
-@property (nonatomic, strong, nullable) NSIndexPath *qw_indexPath;
-@property (nonatomic) BOOL qw_isFirst;
-@property (nonatomic) BOOL qw_isLast;
-
-- (nullable UICollectionView *)qw_collectionView;
 
 @end
 

@@ -12,11 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol QWListBindable;
 
-@protocol QWListItem
+@interface QWListItem : NSObject
+
+@property (nonatomic, readonly) NSIndexPath *indexPath;
+@property (nonatomic, readonly) BOOL isInFirstSection;
+@property (nonatomic, readonly) BOOL isInLastSection;
+@property (nonatomic, readonly) BOOL isFirstItemInSection;
+@property (nonatomic, readonly) BOOL isLastItemInSection;
 
 - (Class<QWListBindable>)viewClass;
 - (NSString *)viewReuseIdentifier;
-- (CGSize (^)(CGSize))viewSizeBlock;
+- (CGSize (^)(UIScrollView *listView, UIEdgeInsets sectionInset))viewSizeBlock;
 
 @end
 
@@ -24,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol QWListBindable <NSObject>
 
-- (void)bindItem:(id<QWListItem>)item;
+- (void)bindItem:(QWListItem *)item;
 
 @end
 

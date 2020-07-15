@@ -6,11 +6,12 @@
 //  Copyright © 2018 guawaji. All rights reserved.
 //
 
-#import "QWListKit.h"
+#import "QWListSection.h"
+#import "QWListItem.h"
 
 @implementation QWListSection
 
-- (NSMutableArray<id<QWListItem>> *)items {
+- (NSMutableArray<QWListItem *> *)items {
     if (!_items) {
         _items = @[].mutableCopy;
     }
