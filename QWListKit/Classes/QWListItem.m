@@ -39,7 +39,7 @@
     return nil;
 }
 
-- (CGSize (^)(UIScrollView * _Nonnull, UIEdgeInsets))viewSizeBlock {
+- (CGSize (^)(UIScrollView * _Nonnull, QWListSection * _Nonnull))viewSizeBlock {
     NSCAssert(NO, @"List Item %@ must override %s", self, __PRETTY_FUNCTION__);
     return nil;
 }

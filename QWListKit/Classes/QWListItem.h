@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol QWListBindable;
+@class QWListSection;
 
 @interface QWListItem : NSObject
 
@@ -22,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (Class<QWListBindable>)viewClass;
 - (NSString *)viewReuseIdentifier;
-- (CGSize (^)(UIScrollView *listView, UIEdgeInsets sectionInset))viewSizeBlock;
+- (CGSize (^)(UIScrollView *listView, QWListSection *section))viewSizeBlock;
 
 @end
 

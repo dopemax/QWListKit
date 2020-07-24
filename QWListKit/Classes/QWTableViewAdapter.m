@@ -66,7 +66,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     QWListSection *sectionModel = self.sections[section];
-//    return sectionModel.isCollapsed ? 1 : sectionModel.items.count;
     if (sectionModel.isCollapsed) {
         return 1;
     } else {
@@ -124,7 +123,7 @@
     if (sectionModel.isCollapsed) return 0.0;
     
     QWListItem *item = [self.sectionItemsMap objectForKey:sectionModel][indexPath.row];
-    return item.viewSizeBlock(tableView, sectionModel.inset).height;
+    return item.viewSizeBlock(tableView, sectionModel).height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -164,7 +163,7 @@
     QWListSection *sectionModel = self.sections[section];
     QWListItem *item = sectionModel.header;
     if (!item) return tableView.style == UITableViewStylePlain ? 0 : CGFLOAT_MIN;
-    return item.viewSizeBlock(tableView, sectionModel.inset).height;
+    return item.viewSizeBlock(tableView, sectionModel).height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -204,7 +203,7 @@
     QWListSection *sectionModel = self.sections[section];
     QWListItem *item = sectionModel.footer;
     if (!item) return tableView.style == UITableViewStylePlain ? 0 : CGFLOAT_MIN;
-    return item.viewSizeBlock(tableView, sectionModel.inset).height;
+    return item.viewSizeBlock(tableView, sectionModel).height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

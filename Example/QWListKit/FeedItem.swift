@@ -62,8 +62,8 @@ class FeedItem: QWListItem {
         return "\(viewClass())"
     }
     
-    override func viewSizeBlock() -> (UIScrollView, UIEdgeInsets) -> CGSize {
-        return { (listView, sectionInset) in
+    override func viewSizeBlock() -> (UIScrollView, QWListSection) -> CGSize {
+        return { (listView, section) in
             return .init(width: listView.bounds.width, height: self.height)
         }
     }

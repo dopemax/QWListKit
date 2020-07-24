@@ -132,7 +132,7 @@
     
     QWListItem *item = [self.sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (item.viewSizeBlock) {
-        return item.viewSizeBlock(collectionView, sectionModel.inset);
+        return item.viewSizeBlock(collectionView, sectionModel);
     }
     return CGSizeZero;
 }
@@ -190,7 +190,7 @@
     QWListSection *sectionModel = self.sections[section];
     QWListItem *item = sectionModel.header;
     if (item.viewSizeBlock) {
-        return item.viewSizeBlock(collectionView, sectionModel.inset);
+        return item.viewSizeBlock(collectionView, sectionModel);
     }
     return CGSizeZero;
 }
@@ -199,7 +199,7 @@
     QWListSection *sectionModel = self.sections[section];
     QWListItem *item = sectionModel.footer;
     if (item.viewSizeBlock) {
-        return item.viewSizeBlock(collectionView, sectionModel.inset);
+        return item.viewSizeBlock(collectionView, sectionModel);
     }
     return CGSizeZero;
 }
