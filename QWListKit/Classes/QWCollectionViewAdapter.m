@@ -39,7 +39,7 @@
     return self;
 }
 
-- (void)reloadListData {
+- (void)updateListData {
     self.sections = [self.dataSource sectionsForCollectionViewAdapter:self];
     for (QWListSection *section in self.sections) {
         if (self.sectionItemsFilterBlock) {
@@ -48,7 +48,6 @@
             [self.sectionItemsMap setObject:section.items forKey:section];
         }
     }
-    [_collectionView reloadData];
     
     if ([self.dataSource respondsToSelector:@selector(emptyViewForCollectionViewAdapter:)]) {
         UIView *backgroundView = [self.dataSource emptyViewForCollectionViewAdapter:self];
@@ -56,8 +55,37 @@
             [_collectionView.backgroundView removeFromSuperview];
             _collectionView.backgroundView = backgroundView;
         }
-        _collectionView.backgroundView.hidden = ![_collectionView qw_listIsEmpty];
+        _collectionView.backgroundView.hidden = ![self _listIsEmpty];
     }
+}
+
+- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates completion:(void (^)(BOOL))completion {
+    [self updateListData];
+    [_collectionView performBatchUpdates:updates completion:completion];
+}
+
+- (void)reloadListData {
+    
+    [self updateListData];
+    
+    [_collectionView reloadData];
+}
+
+- (BOOL)_listIsEmpty {
+    __block BOOL isEmpty = true;
+    [self.sections enumerateObjectsUsingBlock:^(QWListSection * _Nonnull section, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (section.header || section.footer) {
+            isEmpty = false;
+            *stop = true;
+        }
+        if (!section.isCollapsed) {
+            if ([self.sectionItemsMap objectForKey:section].count > 0) {
+                isEmpty = false;
+                *stop = true;
+            };
+        }
+    }];
+    return isEmpty;
 }
 
 #pragma mark - Collection view data source & Collection view delegate

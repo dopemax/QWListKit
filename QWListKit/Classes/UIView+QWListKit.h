@@ -30,9 +30,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)qw_registerClassIfFromNib:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier;
 - (void)qw_registerClassIfFromNib:(Class)viewClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier;
 
-- (BOOL)qw_listIsEmpty;
-- (NSUInteger)qw_listItemsCount;
-
 @end
 
 
@@ -41,9 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)qw_registerClassIfFromNib:(Class)cellClass forCellWithReuseIdentifier:(NSString *)identifier;
 - (void)qw_registerClassIfFromNib:(Class)viewClass forSupplementaryViewOfKind:(NSString *)kind withReuseIdentifier:(NSString *)identifier;
-
-- (BOOL)qw_listIsEmpty;
-- (NSUInteger)qw_listItemsCount;
 
 @end
 

@@ -57,28 +57,6 @@
     }
 }
 
-- (BOOL)qw_listIsEmpty {
-    __block BOOL isEmpty = true;
-    const NSInteger sections = [self.dataSource numberOfSectionsInTableView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        if ([self.dataSource tableView:self numberOfRowsInSection:section] > 0) {
-            isEmpty = false;
-            break;
-        }
-    }
-    return isEmpty;
-}
-
-- (NSUInteger)qw_listItemsCount {
-    __block NSUInteger listItemsCount = 0;
-    const NSInteger sections = [self.dataSource numberOfSectionsInTableView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        const NSInteger rows = [self.dataSource tableView:self numberOfRowsInSection:section];
-        listItemsCount += rows;
-    }
-    return listItemsCount;
-}
-
 @end
 
 
@@ -102,28 +80,6 @@
     } else {
         [self registerClass:viewClass forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
     }
-}
-
-- (BOOL)qw_listIsEmpty {
-    __block BOOL isEmpty = true;
-    const NSInteger sections = [self.dataSource numberOfSectionsInCollectionView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        if ([self.dataSource collectionView:self numberOfItemsInSection:section] > 0) {
-            isEmpty = false;
-            break;
-        }
-    }
-    return isEmpty;
-}
-
-- (NSUInteger)qw_listItemsCount {
-    __block NSUInteger listItemsCount = 0;
-    const NSInteger sections = [self.dataSource numberOfSectionsInCollectionView:self];
-    for (NSInteger section = 0; section < sections; section++) {
-        const NSInteger rows = [self.dataSource collectionView:self numberOfItemsInSection:section];
-        listItemsCount += rows;
-    }
-    return listItemsCount;
 }
 
 @end

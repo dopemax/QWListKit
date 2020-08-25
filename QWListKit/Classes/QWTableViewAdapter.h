@@ -56,6 +56,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reloadListData;
 
+/// Only update sections, will not call reloadData. ( Support insert or delete sections )
+- (void)updateListData;
+
+- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates completion:(void (^)(BOOL))completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

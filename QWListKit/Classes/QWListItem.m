@@ -24,7 +24,7 @@
 {
     self = [super init];
     if (self) {
-        _indexPath = NSIndexPath.new;
+        _indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
     }
     return self;
 }

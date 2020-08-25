@@ -37,7 +37,7 @@
     return self;
 }
 
-- (void)reloadListData {
+- (void)updateListData {
     self.sections = [self.dataSource sectionsForTableViewAdapter:self];
     for (QWListSection *section in self.sections) {
         if (self.sectionItemsFilterBlock) {
@@ -46,7 +46,6 @@
             [self.sectionItemsMap setObject:section.items forKey:section];
         }
     }
-    [_tableView reloadData];
     
     if ([self.dataSource respondsToSelector:@selector(emptyViewForTableViewAdapter:)]) {
         UIView *backgroundView = [self.dataSource emptyViewForTableViewAdapter:self];
@@ -54,8 +53,48 @@
             [_tableView.backgroundView removeFromSuperview];
             _tableView.backgroundView = backgroundView;
         }
-        _tableView.backgroundView.hidden = ![_tableView qw_listIsEmpty];
+        _tableView.backgroundView.hidden = ![self _listIsEmpty];
     }
+}
+
+- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates completion:(void (^)(BOOL))completion {
+    [self updateListData];
+    if (@available(iOS 11.0, *)) {
+        [_tableView performBatchUpdates:updates completion:completion];
+    } else {
+        [_tableView beginUpdates];
+        if (updates) {
+            updates();
+        }
+        [_tableView endUpdates];
+        if (completion) {
+            completion(YES);
+        }
+    }
+}
+
+- (void)reloadListData {
+    
+    [self updateListData];
+    
+    [_tableView reloadData];
+}
+
+- (BOOL)_listIsEmpty {
+    __block BOOL isEmpty = true;
+    [self.sections enumerateObjectsUsingBlock:^(QWListSection * _Nonnull section, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (section.header || section.footer) {
+            isEmpty = false;
+            *stop = true;
+        }
+        if (!section.isCollapsed) {
+            if ([self.sectionItemsMap objectForKey:section].count > 0) {
+                isEmpty = false;
+                *stop = true;
+            };
+        }
+    }];
+    return isEmpty;
 }
 
 #pragma mark - Table view data source & Table view delegate
