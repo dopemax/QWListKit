@@ -17,3 +17,17 @@
 @property (nonatomic, readwrite) BOOL isLastItemInSection;
 
 @end
+
+
+
+#import "QWListSection.h"
+
+@interface QWListSection ()
+
+@property (nonatomic, assign, readwrite) NSInteger section;
+@property (nonatomic, assign, readwrite) BOOL isFirstSection;
+@property (nonatomic, assign, readwrite) BOOL isLastSection;
+
+@end
+
+

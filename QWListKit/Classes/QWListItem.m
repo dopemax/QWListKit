@@ -45,3 +45,16 @@
 }
 
 @end
+
+@implementation QWListSupplementaryItem
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _elementKind = @"supplementary-element-kind";
+    }
+    return self;
+}
+
+@end

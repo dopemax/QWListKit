@@ -10,13 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class QWListItem;
+@class QWListItem, QWListSupplementaryItem;
 
 @interface QWListSection : NSObject
 
-@property (nonatomic, strong, nullable) QWListItem *header;
-@property (nonatomic, strong, nullable) QWListItem *footer;
+@property (nonatomic, strong, nullable) QWListSupplementaryItem *header;
+@property (nonatomic, strong, nullable) QWListSupplementaryItem *footer;
 @property (nonatomic, strong) NSMutableArray<QWListItem *> *items;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSMutableArray<QWListSupplementaryItem *> *> *supplementaryItemsMap;
 
 @property (nonatomic) CGFloat minimumLineSpacing;
 @property (nonatomic) CGFloat minimumInteritemSpacing;
@@ -24,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Determine whether the section is collapsed. Default is false.
 @property (nonatomic) BOOL isCollapsed;
+
+@property (nonatomic, assign, readonly) NSInteger section;
+@property (nonatomic, assign, readonly) BOOL isFirstSection;
+@property (nonatomic, assign, readonly) BOOL isLastSection;
 
 @end
 

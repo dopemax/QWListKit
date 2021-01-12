@@ -28,6 +28,12 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
+@interface QWListSupplementaryItem : QWListItem
+
+@property (nonatomic, copy) NSString *elementKind;
+
+@end
+
 
 @protocol QWListBindable <NSObject>
 
