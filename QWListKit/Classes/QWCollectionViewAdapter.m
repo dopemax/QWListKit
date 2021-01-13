@@ -204,7 +204,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     QWListSection *sectionModel = _sections[indexPath.section];
     
-    __block QWListSupplementaryItem *item;
+    QWListSupplementaryItem *item;
     if ([sectionModel.header.elementKind isEqualToString:kind]) {
         item = sectionModel.header;
     } else if ([sectionModel.footer.elementKind isEqualToString:kind]) {
@@ -234,7 +234,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplaySupplementaryView:(UICollectionReusableView *)view forElementKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
     QWListSection *sectionModel = _sections[indexPath.section];
-    __block QWListSupplementaryItem *item;
+    QWListSupplementaryItem *item;
     if ([sectionModel.header.elementKind isEqualToString:elementKind]) {
         item = sectionModel.header;
     } else if ([sectionModel.footer.elementKind isEqualToString:elementKind]) {
