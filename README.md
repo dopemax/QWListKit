@@ -1,6 +1,6 @@
 # QWListKit
 
-[![CI Status](https://img.shields.io/travis/guawaji/QWListKit.svg?style=flat)](https://travis-ci.org/guawaji/QWListKit)
+[![CI Status](https://img.shields.io/travis/dopemax/QWListKit.svg?style=flat)](https://travis-ci.org/dopemax/QWListKit)
 [![Version](https://img.shields.io/cocoapods/v/QWListKit.svg?style=flat)](https://cocoapods.org/pods/QWListKit)
 [![License](https://img.shields.io/cocoapods/l/QWListKit.svg?style=flat)](https://cocoapods.org/pods/QWListKit)
 [![Platform](https://img.shields.io/cocoapods/p/QWListKit.svg?style=flat)](https://cocoapods.org/pods/QWListKit)
@@ -22,7 +22,7 @@ pod 'QWListKit'
 
 ## Author
 
-guawaji, 1003990034@qq.com
+dopemax, 1003990034@qq.com
 
 ## License
 

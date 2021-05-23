@@ -2,8 +2,8 @@
 //  QWListSection.m
 //  QWListKit
 //
-//  Created by guawaji on 2018/12/14.
-//  Copyright © 2018 guawaji. All rights reserved.
+//  Created by dopemax on 2018/12/14.
+//  Copyright © 2018 dopemax. All rights reserved.
 //
 
 #import "QWListSection.h"
@@ -11,9 +11,9 @@
 
 @interface QWListSection ()
 
-@property (nonatomic, assign, readwrite) NSInteger section;
-@property (nonatomic, assign, readwrite) BOOL isFirstSection;
-@property (nonatomic, assign, readwrite) BOOL isLastSection;
+@property (nonatomic, readwrite) NSInteger sectionIndex;
+@property (nonatomic, readwrite) BOOL isFirstSection;
+@property (nonatomic, readwrite) BOOL isLastSection;
 
 @end
 

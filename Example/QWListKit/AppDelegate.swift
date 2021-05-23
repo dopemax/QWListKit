@@ -2,19 +2,19 @@
 //  AppDelegate.swift
 //  QWListKit
 //
-//  Created by guawaji on 12/06/2019.
-//  Copyright (c) 2019 guawaji. All rights reserved.
+//  Created by dopemax on 12/06/2019.
+//  Copyright (c) 2019 dopemax. All rights reserved.
 //
 
 import UIKit
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }

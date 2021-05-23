@@ -2,8 +2,8 @@
 //  FeedItem.swift
 //  QWListKit_Example
 //
-//  Created by guawaji on 2019/12/12.
-//  Copyright © 2019 guawaji. All rights reserved.
+//  Created by dopemax on 2019/12/12.
+//  Copyright © 2019 dopemax. All rights reserved.
 //
 
 import Foundation
@@ -32,7 +32,7 @@ class FeedItem: QWListItem {
         layout()
     }
     
-    var height: CGFloat = 0.0
+    private var height: CGFloat = 0.0
     
     var isExpanded: Bool = false
     

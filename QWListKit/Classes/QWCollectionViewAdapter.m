@@ -2,8 +2,8 @@
 //  QWCollectionViewAdapter.m
 //  QWListKit
 //
-//  Created by guawaji on 2018/12/14.
-//  Copyright © 2018 guawaji. All rights reserved.
+//  Created by dopemax on 2018/12/14.
+//  Copyright © 2018 dopemax. All rights reserved.
 //
 
 #import "QWCollectionViewAdapter.h"
@@ -32,21 +32,12 @@
         _registeredCellReuseIdentifierSet = NSMutableSet.new;
         _registeredSupplementaryReuseIdentifierMap = @{}.mutableCopy;
         _sections = @[];
-        _sectionItemsMap = [NSMapTable strongToStrongObjectsMapTable];
+        _sectionItemsMap = [NSMapTable weakToWeakObjectsMapTable];
     }
     return self;
 }
 
-- (void)updateListData {
-    self.sections = [self.dataSource sectionsForCollectionViewAdapter:self];
-    for (QWListSection *section in _sections) {
-        if (self.sectionItemsFilterBlock) {
-            [_sectionItemsMap setObject:self.sectionItemsFilterBlock(section) forKey:section];
-        } else {
-            [_sectionItemsMap setObject:section.items forKey:section];
-        }
-    }
-    
+- (void)_updateBackgroundViewHidden {
     if ([self.dataSource respondsToSelector:@selector(emptyViewForCollectionViewAdapter:)]) {
         UIView *backgroundView = [self.dataSource emptyViewForCollectionViewAdapter:self];
         if (backgroundView != _collectionView.backgroundView) {
@@ -57,37 +48,16 @@
     }
 }
 
-- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates completion:(void (^)(BOOL))completion animated:(BOOL)animated {
-    [self updateListData];
-    if (animated) {
-        [_collectionView performBatchUpdates:updates completion:completion];
-    } else {
-        [UIView performWithoutAnimation:^{
-            [_collectionView performBatchUpdates:updates completion:completion];
-        }];
-    }
-}
-
-- (void)reloadListData {
-    
-    [self updateListData];
-    
-    [_collectionView reloadData];
-}
-
 - (BOOL)_listIsEmpty {
     __block BOOL isEmpty = true;
     [_sections enumerateObjectsUsingBlock:^(QWListSection * _Nonnull section, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (section.isCollapsed) {
-            if (section.header || section.footer) {
-                isEmpty = false;
-                *stop = true;
-            }
-        } else {
-            if ([_sectionItemsMap objectForKey:section].count > 0) {
-                isEmpty = false;
-                *stop = true;
-            }
+        if ([_sectionItemsMap objectForKey:section].count > 0) {
+            isEmpty = false;
+            *stop = true;
+        }
+        if (section.header || section.footer) {
+            isEmpty = false;
+            *stop = true;
         }
     }];
     return isEmpty;
@@ -96,12 +66,24 @@
 #pragma mark - Collection view data source & Collection view delegate
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    self.sections = [self.dataSource sectionsForCollectionViewAdapter:self];
+    
+    [_sectionItemsMap removeAllObjects];
     for (NSInteger i = 0; i < _sections.count; i++) {
         QWListSection *sectionModel = _sections[i];
-        sectionModel.section = i;
+        sectionModel.sectionIndex = i;
         sectionModel.isFirstSection = i == 0;
         sectionModel.isLastSection = i == _sections.count - 1;
+        
+        if (self.sectionItemsFilterBlock) {
+            [_sectionItemsMap setObject:self.sectionItemsFilterBlock(sectionModel) forKey:sectionModel];
+        } else {
+            [_sectionItemsMap setObject:sectionModel.items forKey:sectionModel];
+        }
     }
+    
+    [self _updateBackgroundViewHidden];
+    
     return _sections.count;
 }
 
@@ -196,7 +178,8 @@
     
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (item.viewSizeBlock) {
-        return item.viewSizeBlock(collectionView, sectionModel);
+        const CGSize size = item.viewSizeBlock(collectionView, sectionModel);
+        return size;
     }
     return CGSizeZero;
 }
@@ -213,7 +196,9 @@
     
     if (!item) {
         NSMutableArray *supplementaryItems = sectionModel.supplementaryItemsMap[kind];
-        item = supplementaryItems[indexPath.row];
+        if (indexPath.row < supplementaryItems.count) {
+            item = supplementaryItems[indexPath.row];
+        }
     }
     
     if (!item) return nil;
@@ -243,7 +228,9 @@
     
     if (!item) {
         NSMutableArray *supplementaryItems = sectionModel.supplementaryItemsMap[elementKind];
-        item = supplementaryItems[indexPath.row];
+        if (indexPath.row < supplementaryItems.count) {
+            item = supplementaryItems[indexPath.row];
+        }
     }
     
     if (!item) return;
@@ -263,7 +250,8 @@
     QWListSection *sectionModel = _sections[section];
     QWListItem *item = sectionModel.header;
     if (item.viewSizeBlock) {
-        return item.viewSizeBlock(collectionView, sectionModel);
+        const CGSize size = item.viewSizeBlock(collectionView, sectionModel);
+        return size;
     }
     return CGSizeZero;
 }
@@ -272,7 +260,8 @@
     QWListSection *sectionModel = _sections[section];
     QWListItem *item = sectionModel.footer;
     if (item.viewSizeBlock) {
-        return item.viewSizeBlock(collectionView, sectionModel);
+        const CGSize size = item.viewSizeBlock(collectionView, sectionModel);
+        return size;
     }
     return CGSizeZero;
 }

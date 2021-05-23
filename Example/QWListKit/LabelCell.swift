@@ -2,8 +2,8 @@
 //  LabelCell.swift
 //  QWListKit_Example
 //
-//  Created by guawaji on 2019/12/12.
-//  Copyright © 2019 guawaji. All rights reserved.
+//  Created by dopemax on 2019/12/12.
+//  Copyright © 2019 dopemax. All rights reserved.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class LabelCell: UITableViewCell {
 
     static func textHeight(_ text: String, width: CGFloat) -> CGFloat {
         let constrainedSize = CGSize(width: width - insets.left - insets.right, height: CGFloat.greatestFiniteMagnitude)
-        let attributes = [NSAttributedStringKey.font: font]
+        let attributes = [NSAttributedString.Key.font: font]
         let options: NSStringDrawingOptions = [.usesFontLeading, .usesLineFragmentOrigin]
         let bounds = (text as NSString).boundingRect(with: constrainedSize, options: options, attributes: attributes, context: nil)
         return ceil(bounds.height) + insets.top + insets.bottom
@@ -36,7 +36,7 @@ class LabelCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = UIEdgeInsetsInsetRect(contentView.bounds, LabelCell.insets)
+        label.frame = contentView.bounds.inset(by: LabelCell.insets)
     }
 
 }

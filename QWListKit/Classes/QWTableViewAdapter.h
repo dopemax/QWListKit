@@ -2,8 +2,8 @@
 //  QWTableViewAdapter.h
 //  QWListKit
 //
-//  Created by guawaji on 2018/12/14.
-//  Copyright © 2018 guawaji. All rights reserved.
+//  Created by dopemax on 2018/12/14.
+//  Copyright © 2018 dopemax. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -31,35 +31,28 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)new NS_UNAVAILABLE;
 
 @property (nonatomic, unsafe_unretained, readonly) __kindof UITableView *tableView;
-@property (nonatomic, weak) id<QWTableViewAdapterDataSource> dataSource;
+@property (nonatomic, nullable, weak) id<QWTableViewAdapterDataSource> dataSource;
 
-@property (nonatomic, strong) NSArray<NSString *> *sectionIndexTitles;
+@property (nonatomic, copy, nullable) NSMutableArray<QWListItem *> * (^sectionItemsFilterBlock)(QWListSection *sectionModel);
 
-@property (nonatomic, copy) NSMutableArray<QWListItem *> * (^sectionItemsFilterBlock)(QWListSection *sectionModel);
+@property (nonatomic, copy, nullable) void (^willDisplayCellBlock)(QWTableViewAdapter *adapter, __kindof UITableViewCell *cell, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void (^willDisplayHeaderViewBlock)(QWTableViewAdapter *adapter, __kindof UIView *headerView, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void (^willDisplayFooterViewBlock)(QWTableViewAdapter *adapter, __kindof UIView *footerView, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void (^didSelectItemBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
 
-@property (nonatomic, copy) void (^willDisplayCellBlock)(QWTableViewAdapter *adapter, __kindof UITableViewCell *cell, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) void (^willDisplayHeaderViewBlock)(QWTableViewAdapter *adapter, __kindof UIView *headerView, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) void (^willDisplayFooterViewBlock)(QWTableViewAdapter *adapter, __kindof UIView *footerView, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) void (^didSelectItemBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) BOOL (^canEditRowBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) UITableViewCellEditingStyle (^editingStyleForRowBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) NSString * (^titleForDeleteConfirmationButtonForRowBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) void * (^commitEditingStyleBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) BOOL (^canMoveItemBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) void (^moveItemBlock)(QWTableViewAdapter *adapter, QWListSection *sourceSectionModel, QWListItem *sourceItem, QWListSection *destinationSectionModel, QWListItem *destinationItem);
+@property (nonatomic, copy, nullable) NSArray<NSString *> * (^indexTitlesBlock)(QWTableViewAdapter *adapter);
+@property (nonatomic, copy, nullable) BOOL (^canEditRowBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) UITableViewCellEditingStyle (^editingStyleForRowBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) NSString * (^titleForDeleteConfirmationButtonForRowBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void * (^commitEditingStyleBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) BOOL (^canMoveItemBlock)(QWTableViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void (^moveItemBlock)(QWTableViewAdapter *adapter, QWListSection *sourceSectionModel, QWListItem *sourceItem, QWListSection *destinationSectionModel, QWListItem *destinationItem);
 
-@property (nonatomic, copy) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
-@property (nonatomic, copy) void (^scrollViewWillBeginDraggingBlock)(UIScrollView *scrollView);
-@property (nonatomic, copy) void (^scrollViewDidEndDraggingBlock)(UIScrollView *scrollView, BOOL decelerate);
-@property (nonatomic, copy) void (^scrollViewDidEndDeceleratingBlock)(UIScrollView *scrollView);
-@property (nonatomic, copy) void (^scrollViewDidScrollToTopBlock)(UIScrollView *scrollView);
-
-- (void)reloadListData;
-
-/// Only update sections, will not call reloadData. ( Support insert or delete sections )
-- (void)updateListData;
-
-- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates completion:(void (^)(BOOL))completion;
+@property (nonatomic, copy, nullable) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy, nullable) void (^scrollViewWillBeginDraggingBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy, nullable) void (^scrollViewDidEndDraggingBlock)(UIScrollView *scrollView, BOOL decelerate);
+@property (nonatomic, copy, nullable) void (^scrollViewDidEndDeceleratingBlock)(UIScrollView *scrollView);
+@property (nonatomic, copy, nullable) void (^scrollViewDidScrollToTopBlock)(UIScrollView *scrollView);
 
 @end
 

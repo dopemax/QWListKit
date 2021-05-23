@@ -2,11 +2,13 @@
 //  ViewController.swift
 //  QWListKit
 //
-//  Created by guawaji on 12/06/2019.
-//  Copyright (c) 2019 guawaji. All rights reserved.
+//  Created by dopemax on 12/06/2019.
+//  Copyright (c) 2019 dopemax. All rights reserved.
 //
 
 import UIKit
+@_exported import QWListKit
+@_exported import Then
 
 class ViewController: UIViewController {
     
@@ -30,7 +32,8 @@ class ViewController: UIViewController {
             let item = FeedItem(model: feed)
             demoSection.items.add(item)
         }
-        adapter.reloadListData()
+        adapter.dataSource = self
+//        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -71,7 +74,7 @@ extension ViewController: QWTableViewAdapterDataSource {
         return [demoSection]
     }
     
-    func emptyView(forListAdapter listAdapter: QWTableViewAdapter) -> UIView? {
+    func emptyView(for adapter: QWTableViewAdapter) -> UIView? {
         return nil
     }
     

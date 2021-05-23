@@ -2,8 +2,8 @@
 //  QWTableViewAdapter.m
 //  QWListKit
 //
-//  Created by guawaji on 2018/12/14.
-//  Copyright © 2018 guawaji. All rights reserved.
+//  Created by dopemax on 2018/12/14.
+//  Copyright © 2018 dopemax. All rights reserved.
 //
 
 #import "QWTableViewAdapter.h"
@@ -32,21 +32,12 @@
         _registeredCellReuseIdentifierSet = NSMutableSet.new;
         _registeredHeaderFooterReuseIdentifierSet = NSMutableSet.new;
         _sections = @[];
-        _sectionItemsMap = [NSMapTable strongToStrongObjectsMapTable];
+        _sectionItemsMap = [NSMapTable weakToWeakObjectsMapTable];
     }
     return self;
 }
 
-- (void)updateListData {
-    self.sections = [self.dataSource sectionsForTableViewAdapter:self];
-    for (QWListSection *section in _sections) {
-        if (self.sectionItemsFilterBlock) {
-            [_sectionItemsMap setObject:self.sectionItemsFilterBlock(section) forKey:section];
-        } else {
-            [_sectionItemsMap setObject:section.items forKey:section];
-        }
-    }
-    
+- (void)_updateBackgroundViewHidden {
     if ([self.dataSource respondsToSelector:@selector(emptyViewForTableViewAdapter:)]) {
         UIView *backgroundView = [self.dataSource emptyViewForTableViewAdapter:self];
         if (backgroundView != _tableView.backgroundView) {
@@ -57,42 +48,16 @@
     }
 }
 
-- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates completion:(void (^)(BOOL))completion {
-    [self updateListData];
-    if (@available(iOS 11.0, *)) {
-        [_tableView performBatchUpdates:updates completion:completion];
-    } else {
-        [_tableView beginUpdates];
-        if (updates) {
-            updates();
-        }
-        [_tableView endUpdates];
-        if (completion) {
-            completion(YES);
-        }
-    }
-}
-
-- (void)reloadListData {
-    
-    [self updateListData];
-    
-    [_tableView reloadData];
-}
-
 - (BOOL)_listIsEmpty {
     __block BOOL isEmpty = true;
     [_sections enumerateObjectsUsingBlock:^(QWListSection * _Nonnull section, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (section.isCollapsed) {
-            if (section.header || section.footer) {
-                isEmpty = false;
-                *stop = true;
-            }
-        } else {
-            if ([_sectionItemsMap objectForKey:section].count > 0) {
-                isEmpty = false;
-                *stop = true;
-            }
+        if ([_sectionItemsMap objectForKey:section].count > 0) {
+            isEmpty = false;
+            *stop = true;
+        }
+        if (section.header || section.footer) {
+            isEmpty = false;
+            *stop = true;
         }
     }];
     return isEmpty;
@@ -101,6 +66,24 @@
 #pragma mark - Table view data source & Table view delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    self.sections = [self.dataSource sectionsForTableViewAdapter:self];
+    
+    [_sectionItemsMap removeAllObjects];
+    for (NSInteger i = 0; i < _sections.count; i++) {
+        QWListSection *sectionModel = _sections[i];
+        sectionModel.sectionIndex = i;
+        sectionModel.isFirstSection = i == 0;
+        sectionModel.isLastSection = i == _sections.count - 1;
+        
+        if (self.sectionItemsFilterBlock) {
+            [_sectionItemsMap setObject:self.sectionItemsFilterBlock(sectionModel) forKey:sectionModel];
+        } else {
+            [_sectionItemsMap setObject:sectionModel.items forKey:sectionModel];
+        }
+    }
+    
+    [self _updateBackgroundViewHidden];
+    
     return _sections.count;
 }
 
@@ -115,7 +98,7 @@
     sectionModel.footer.isInFirstSection = section == 0;
     sectionModel.footer.isInLastSection = section == _sections.count - 1;
     
-    NSArray *items = [_sectionItemsMap objectForKey:sectionModel];
+    NSArray<QWListItem *> *items = [_sectionItemsMap objectForKey:sectionModel];
     for (NSInteger i = 0; i < items.count; i++) {
         QWListItem *item = items[i];
         item.indexPath = [NSIndexPath indexPathForItem:i inSection:section];
@@ -176,7 +159,8 @@
     if (sectionModel.isCollapsed) return 0.0;
     
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
-    return item.viewSizeBlock(tableView, sectionModel).height;
+    const CGSize size = item.viewSizeBlock(tableView, sectionModel);
+    return size.height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -212,7 +196,8 @@
     QWListSection *sectionModel = _sections[section];
     QWListItem *item = sectionModel.header;
     if (!item) return tableView.style == UITableViewStylePlain ? 0 : CGFLOAT_MIN;
-    return item.viewSizeBlock(tableView, sectionModel).height;
+    const CGSize size = item.viewSizeBlock(tableView, sectionModel);
+    return size.height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -248,7 +233,8 @@
     QWListSection *sectionModel = _sections[section];
     QWListItem *item = sectionModel.footer;
     if (!item) return tableView.style == UITableViewStylePlain ? 0 : CGFLOAT_MIN;
-    return item.viewSizeBlock(tableView, sectionModel).height;
+    const CGSize size = item.viewSizeBlock(tableView, sectionModel);
+    return size.height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -260,7 +246,10 @@
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return _sectionIndexTitles;
+    if (self.indexTitlesBlock) {
+        return self.indexTitlesBlock(self);
+    }
+    return nil;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

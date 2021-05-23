@@ -2,8 +2,8 @@
 //  ImageCell.swift
 //  QWListKit_Example
 //
-//  Created by guawaji on 2019/12/12.
-//  Copyright © 2019 guawaji. All rights reserved.
+//  Created by dopemax on 2019/12/12.
+//  Copyright © 2019 dopemax. All rights reserved.
 //
 
 import UIKit

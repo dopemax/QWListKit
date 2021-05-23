@@ -2,8 +2,8 @@
 //  QWListItem.m
 //  QWListKit
 //
-//  Created by guawaji on 2020/7/14.
-//  Copyright © 2020 guawaji. All rights reserved.
+//  Created by dopemax on 2020/7/14.
+//  Copyright © 2020 dopemax. All rights reserved.
 //
 
 #import "QWListItem.h"
