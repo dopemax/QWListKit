@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) QWListSupplementaryItem *header;
 @property (nonatomic, strong, nullable) QWListSupplementaryItem *footer;
-@property (nonatomic, strong) NSMutableArray<QWListItem *> *items;
-@property (nonatomic, strong) NSMutableDictionary<NSString *, NSMutableArray<QWListSupplementaryItem *> *> *supplementaryItemsMap;
+@property (nonatomic, strong) NSMutableArray<QWListItem *> *items NS_REFINED_FOR_SWIFT;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSMutableArray<QWListSupplementaryItem *> *> *supplementaryItemsMap NS_REFINED_FOR_SWIFT;
 
 @property (nonatomic) CGFloat minimumLineSpacing;
 @property (nonatomic) CGFloat minimumInteritemSpacing;

@@ -7,8 +7,6 @@ target 'QWListKit_Example' do
   pod 'QWListKit', :path => '../'
   
   pod 'Then'
-  pod 'SnapKit', '~> 5.0.1'
-  
 
   target 'QWListKit_Tests' do
     inherit! :search_paths

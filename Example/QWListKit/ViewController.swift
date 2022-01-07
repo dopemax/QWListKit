@@ -30,7 +30,8 @@ class ViewController: UIViewController {
         (0..<count).map { $0 }.forEach { (index) in
             let feed = Feed(type: Bool.random() ? .type1 : .type2, title: titles[index % titles.count])
             let item = FeedItem(model: feed)
-            demoSection.items.add(item)
+//            demoSection.items.add(item)
+            demoSection.items.append(item)
         }
         adapter.dataSource = self
 //        tableView.reloadData()
@@ -50,13 +51,13 @@ class ViewController: UIViewController {
     lazy var adapter: QWTableViewAdapter = {
         let adapter = QWTableViewAdapter(tableView: tableView)
         adapter.dataSource = self
-        adapter.didSelectItemBlock = { [unowned self] (adapter, section, item) in
+        adapter.didSelectItemBlock = { [unowned self] (tableView, section, item) in
             guard let item = item as? FeedItem else { return }
-            adapter.tableView.deselectRow(at: item.indexPath, animated: true)
+            tableView.deselectRow(at: item.indexPath, animated: true)
             if item.model.type == .type1 {
                 item.isExpanded.toggle()
                 item.layout()
-                adapter.tableView.reloadRows(at: [item.indexPath], with: .automatic)
+                tableView.reloadRows(at: [item.indexPath], with: .automatic)
             } else {
                 self.navigationController?.pushViewController(ViewController(), animated: true)
             }

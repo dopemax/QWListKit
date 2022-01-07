@@ -1,16 +1,13 @@
 PODS:
   - QWListKit (1.4.0)
-  - SnapKit (5.0.1)
   - Then (2.7.0)
 
 DEPENDENCIES:
   - QWListKit (from `../`)
-  - SnapKit (~> 5.0.1)
   - Then
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - SnapKit
     - Then
 
 EXTERNAL SOURCES:
@@ -19,9 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   QWListKit: 99b5b17ef5c063532ac87873d3c0fb12c4b3dac7
-  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 8ae06c09dd429cc698d188c190aa9b91093d6394
+PODFILE CHECKSUM: fdc99f9b8305d34ba92c4fea9a28438476c31e39
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

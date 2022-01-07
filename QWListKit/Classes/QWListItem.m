@@ -35,8 +35,7 @@
 }
 
 - (NSString *)viewReuseIdentifier {
-    NSCAssert(NO, @"List Item %@ must override %s", self, __PRETTY_FUNCTION__);
-    return nil;
+    return NSStringFromClass([self viewClass]);
 }
 
 - (CGSize (^)(UIScrollView * _Nonnull, QWListSection * _Nonnull))viewSizeBlock {

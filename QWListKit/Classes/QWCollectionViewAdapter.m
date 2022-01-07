@@ -168,7 +168,7 @@
         }
     }
     if (self.willDisplayCellBlock) {
-        self.willDisplayCellBlock(self, cell, sectionModel, item);
+        self.willDisplayCellBlock(collectionView, cell, sectionModel, item);
     }
 }
 
@@ -242,7 +242,7 @@
         }
     }
     if (self.willDisplaySupplementaryViewBlock) {
-        self.willDisplaySupplementaryViewBlock(self, view, elementKind, sectionModel, item);
+        self.willDisplaySupplementaryViewBlock(collectionView, view, elementKind, sectionModel, item);
     }
 }
 
@@ -270,7 +270,7 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.didSelectItemBlock) {
-        self.didSelectItemBlock(self, sectionModel, item);
+        self.didSelectItemBlock(collectionView, sectionModel, item);
     }
 }
 
@@ -278,7 +278,7 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.canMoveItemBlock) {
-        return self.canMoveItemBlock(self, sectionModel, item);
+        return self.canMoveItemBlock(collectionView, sectionModel, item);
     }
     return false;
 }
@@ -289,7 +289,7 @@
     QWListSection *destinationSectionModel = _sections[destinationIndexPath.section];
     QWListItem *destinationItem = [_sectionItemsMap objectForKey:destinationSectionModel][destinationIndexPath.row];
     if (self.moveItemBlock) {
-        self.moveItemBlock(self, sourceSectionModel, sourceItem, destinationSectionModel, destinationItem);
+        self.moveItemBlock(collectionView, sourceSectionModel, sourceItem, destinationSectionModel, destinationItem);
     }
 }
 

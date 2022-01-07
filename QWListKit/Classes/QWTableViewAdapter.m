@@ -150,7 +150,7 @@
         }
     }
     if (self.willDisplayCellBlock) {
-        self.willDisplayCellBlock(self, cell, sectionModel, item);
+        self.willDisplayCellBlock(tableView, cell, sectionModel, item);
     }
 }
 
@@ -188,7 +188,7 @@
         }
     }
     if (self.willDisplayHeaderViewBlock) {
-        self.willDisplayHeaderViewBlock(self, view, sectionModel, item);
+        self.willDisplayHeaderViewBlock(tableView, view, sectionModel, item);
     }
 }
 
@@ -225,7 +225,7 @@
         }
     }
     if (self.willDisplayFooterViewBlock) {
-        self.willDisplayFooterViewBlock(self, view, sectionModel, item);
+        self.willDisplayFooterViewBlock(tableView, view, sectionModel, item);
     }
 }
 
@@ -241,13 +241,13 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.didSelectItemBlock) {
-        self.didSelectItemBlock(self, sectionModel, item);
+        self.didSelectItemBlock(tableView, sectionModel, item);
     }
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     if (self.indexTitlesBlock) {
-        return self.indexTitlesBlock(self);
+        return self.indexTitlesBlock(tableView);
     }
     return nil;
 }
@@ -256,7 +256,7 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.canEditRowBlock) {
-        return self.canEditRowBlock(self, sectionModel, item);
+        return self.canEditRowBlock(tableView, sectionModel, item);
     }
     return false;
 }
@@ -265,7 +265,7 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.editingStyleForRowBlock) {
-        return self.editingStyleForRowBlock(self, sectionModel, item);
+        return self.editingStyleForRowBlock(tableView, sectionModel, item);
     }
     return UITableViewCellEditingStyleDelete;
 }
@@ -274,7 +274,7 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.titleForDeleteConfirmationButtonForRowBlock) {
-        return self.titleForDeleteConfirmationButtonForRowBlock(self, sectionModel, item);
+        return self.titleForDeleteConfirmationButtonForRowBlock(tableView, sectionModel, item);
     }
     return @"删除";
 }
@@ -283,7 +283,7 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.commitEditingStyleBlock) {
-        self.commitEditingStyleBlock(self, sectionModel, item);
+        self.commitEditingStyleBlock(tableView, sectionModel, item);
     }
 }
 
@@ -291,7 +291,7 @@
     QWListSection *sectionModel = _sections[indexPath.section];
     QWListItem *item = [_sectionItemsMap objectForKey:sectionModel][indexPath.row];
     if (self.canMoveItemBlock) {
-        return self.canMoveItemBlock(self, sectionModel, item);
+        return self.canMoveItemBlock(tableView, sectionModel, item);
     }
     return false;
 }
@@ -302,7 +302,7 @@
     QWListSection *destinationSectionModel = _sections[destinationIndexPath.section];
     QWListItem *destinationItem = [_sectionItemsMap objectForKey:destinationSectionModel][destinationIndexPath.row];
     if (self.moveItemBlock) {
-        self.moveItemBlock(self, sourceSectionModel, sourceItem, destinationSectionModel, destinationItem);
+        self.moveItemBlock(tableView, sourceSectionModel, sourceItem, destinationSectionModel, destinationItem);
     }
 }
 

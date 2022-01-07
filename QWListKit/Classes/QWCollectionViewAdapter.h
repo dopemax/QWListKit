@@ -35,12 +35,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, nullable) NSMutableArray<QWListItem *> * (^sectionItemsFilterBlock)(QWListSection *sectionModel);
 
-@property (nonatomic, copy, nullable) void (^willDisplayCellBlock)(QWCollectionViewAdapter *adapter, __kindof UICollectionViewCell *cell, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy, nullable) void (^willDisplaySupplementaryViewBlock)(QWCollectionViewAdapter *adapter, __kindof UICollectionReusableView *view, NSString *elementKind, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy, nullable) void (^didSelectItemBlock)(QWCollectionViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void (^willDisplayCellBlock)(UICollectionView *collectionView, __kindof UICollectionViewCell *cell, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void (^willDisplaySupplementaryViewBlock)(UICollectionView *collectionView, __kindof UICollectionReusableView *view, NSString *elementKind, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy, nullable) void (^didSelectItemBlock)(UICollectionView *collectionView, QWListSection *sectionModel, QWListItem *item);
 
-@property (nonatomic, copy, nullable) BOOL (^canMoveItemBlock)(QWCollectionViewAdapter *adapter, QWListSection *sectionModel, QWListItem *item);
-@property (nonatomic, copy) void (^moveItemBlock)(QWCollectionViewAdapter *adapter, QWListSection *sectionSectionModel, QWListItem *sourceItem, QWListSection *destinationSectionModel, QWListItem *destinationItem);
+@property (nonatomic, copy, nullable) BOOL (^canMoveItemBlock)(UICollectionView *collectionView, QWListSection *sectionModel, QWListItem *item);
+@property (nonatomic, copy) void (^moveItemBlock)(UICollectionView *collectionView, QWListSection *sectionSectionModel, QWListItem *sourceItem, QWListSection *destinationSectionModel, QWListItem *destinationItem);
 
 @property (nonatomic, copy, nullable) void (^scrollViewDidScrollBlock)(UIScrollView *scrollView);
 @property (nonatomic, copy, nullable) void (^scrollViewWillBeginDraggingBlock)(UIScrollView *scrollView);
