@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'QWListKit'
-  s.version          = '1.4.0'
+  s.version          = '1.5.0'
   s.summary          = 'A data-driven UITableView and UICollectionView framework'
 
 # This description is used to generate tags and improve search results.
